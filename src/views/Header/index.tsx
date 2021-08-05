@@ -1,9 +1,10 @@
 import React from "react";
+import Wrapper from "../../components/Wrapper";
 import { Header as SemanticHeader, Dropdown, Menu } from "semantic-ui-react";
 
 const Header = () => {
   return (
-    <div className='header'>
+    <Wrapper>
       <SemanticHeader as='h1' block>
         <Menu secondary horizontal='true'>
           OCRYPTO
@@ -15,7 +16,7 @@ const Header = () => {
           <Menu.Item name='account' active position='right' />
         </Menu>
       </SemanticHeader>
-    </div>
+    </Wrapper>
   );
 };
 export default Header;

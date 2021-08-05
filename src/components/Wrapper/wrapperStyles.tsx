@@ -1,0 +1,33 @@
+import styled from "@emotion/styled";
+
+export const WrapperStyled = styled.div(({ props }: any) => ({
+  display: props.display,
+  position: props.position,
+  justifyContent: props.justifyContent,
+  alignItems: props.alignItems,
+  flexDirection: props.flexDirection,
+  flexWrap: props.flexWrap,
+  textAlign: props.textalign || props.textAlign,
+  verticalAlign: props.verticalAlign,
+  float: props.float,
+  overflow: props.overflow,
+  margin: props.margin,
+  width: props.width,
+  height: props.height,
+  maxWidth: props.maxWidth,
+  maxHeight: props.maxHeight,
+  minWidth: props.minWidth,
+  minHeight: props.minHeight,
+  padding: props.padding,
+  border: props.border,
+  borderColor: props.borderColor,
+  borderRadius: props.borderRadius,
+  boxShadow: props.boxShadow,
+  backgroundColor: props.backgroundColor,
+  "> *": {
+    display: props.childrenDisplay,
+    margin: props.childrenMargin,
+    verticalAlign: props.childrenVerticalAlign,
+    fontSize: props.childrenFontSize,
+  },
+}));
