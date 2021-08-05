@@ -6,14 +6,15 @@ import Wrapper from "../../components/Wrapper";
 import "semantic-ui-css/semantic.min.css";
 import "./styles.scss";
 
-function App() {
+const App: React.FC<any> = ({ isAuthenticated }) => {
   return (
     <Wrapper>
       <Header />
+      {isAuthenticated ?? <Footer />}
       <Dashboard />
       <Footer />
     </Wrapper>
   );
-}
+};
 
 export default App;

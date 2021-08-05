@@ -1,9 +1,10 @@
 import React from "react";
 import { Table } from "semantic-ui-react";
+import Wrapper from "../../../components/Wrapper";
 
 const Assets = () => {
   return (
-    <div className='Assets'>
+    <Wrapper width='80%' margin='auto'>
       <Table singleLine>
         <Table.Header>
           <Table.Row>
@@ -29,7 +30,7 @@ const Assets = () => {
           </Table.Row>
         </Table.Body>
       </Table>
-    </div>
+    </Wrapper>
   );
 };
 
