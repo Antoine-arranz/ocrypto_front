@@ -1,4 +1,5 @@
-const usersSelector = (state:any) => {
-    return state.userReducer};
+const usersSelector = (state: any) => {
+  return state.userReducer;
+};
 
-export default usersSelector
+export default usersSelector;

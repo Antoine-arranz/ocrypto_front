@@ -1,14 +1,13 @@
 import React from "react";
-import Dashboard from "../Dashboard";
 import Header from "../../containers/Header";
 import Footer from "../Footer";
 import Wrapper from "../../components/Wrapper";
 import "semantic-ui-css/semantic.min.css";
 import "./styles.scss";
-import Login from "../../containers/Login";
 import { Route, Switch } from "react-router-dom";
 import routes from "../../routes";
 import loginRoutes from "../../routes/user/routeLogin";
+import Error from "../Error";
 const App: React.FC<any> = ({ isAuthenticated }) => {
   return (
     <Wrapper>
@@ -30,8 +29,11 @@ const App: React.FC<any> = ({ isAuthenticated }) => {
               key={route.path}
             />
           ))}
-        <Footer />
+        <Route path='*' exact={true}>
+          <Error />
+        </Route>
       </Switch>
+      <Footer />
     </Wrapper>
   );
 };
