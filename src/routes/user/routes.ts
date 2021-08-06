@@ -1,10 +1,3 @@
-import Login from '../../views/Login'
+const userRoutes: any = [];
 
-const userRoutes = [
-    {
-        path : '/login',
-        component : Login
-    }
-]
-
-export default userRoutes
+export default userRoutes;
