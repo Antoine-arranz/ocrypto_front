@@ -1,14 +1,19 @@
-import { Formiz } from "@formiz/core";
+import { Formiz, useForm } from "@formiz/core";
 import { isEmail } from "@formiz/validations";
 import React from "react";
 import Button from "../../components/Button";
 import FormizSimpleInput from "../../components/Formiz";
 import Wrapper from "../../components/Wrapper";
 
-const Login = () => {
+const Login = ({handleLogin,user}:any) => {
+  const loginForm = useForm();
+  const signIn =(data:any) => {
+    handleLogin(data)
+  }
   return (
-    <Wrapper width='50%' margin='auto'>
-      <Formiz onSubmit={(values) => console.log(values)}>
+    <Wrapper width='30%' margin='auto'>
+      <Formiz connect={loginForm} onValidSubmit={signIn}>
+      <form onSubmit={loginForm.submit} noValidate>
         <FormizSimpleInput
           type='email'
           name='email'
@@ -30,11 +35,10 @@ const Login = () => {
           required='Password is required'
         />
         <Button
-          textAlign='right'
           type='submit'
-          content='coucou'
-          onSubmit={(values: any) => console.log(values)}
+          content='Submit'
         />
+        </form>
       </Formiz>
     </Wrapper>
   );
