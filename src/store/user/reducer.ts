@@ -1,59 +1,68 @@
 import actionsTypes from "./actionTypes";
 
 export interface userState {
-    firstName:string;
-    lastName:string;
-    email: string;
-    password: string;
-    isAuthenticated: boolean;
-    loading: boolean;
-    error:string;
-  }
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  isAuthenticated: boolean;
+  loading: boolean;
+  error: string;
+}
 
-  
 const initialState: userState = {
-    firstName:"",
-    lastName:"",
-    email: "",
-    password: "",
-    isAuthenticated: false,
-    loading: false,
-    error:""
-  };
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  isAuthenticated: false,
+  loading: false,
+  error: "",
+};
 
-  const userReducer =(state:userState = initialState,action:any) => {
-    switch(action.type){
-      
-      case actionsTypes.LOGIN_INPUT_CHANGE:
+const userReducer = (state: userState = initialState, action: any) => {
+  switch (action.type) {
+    case actionsTypes.LOGIN_INPUT_SUBMIT_LOADING:
       return {
         ...state,
-        ...action.payload
-      }
-      case actionsTypes.LOGIN_INPUT_SUBMIT_LOADING:
-        return {
-          ...state,
-          loading:true
-        };
-      case actionsTypes.LOGIN_INPUT_SUBMIT_SUCESS:
+        loading: true,
+      };
+    case actionsTypes.LOGIN_INPUT_SUBMIT_SUCESS:
       return {
         ...state,
         ...action.payload.result,
         isAuthenticated: true,
-        loading:false
+        loading: false,
       };
-      case actionsTypes.LOGIN_INPUT_SUBMIT_ERROR :
-        return{
-          ...state,
-          loading:false,
-          error:action.payload
-        }
+    case actionsTypes.LOGIN_INPUT_SUBMIT_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case actionsTypes.SIGNIN_INPUT_SUBMIT_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case actionsTypes.SIGNIN_INPUT_SUBMIT_SUCESS:
+      return {
+        ...state,
+        loading: false,
+        ...action.payload.result,
+      };
+    case actionsTypes.SIGNIN_INPUT_SUBMIT_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
 
-      default:
-        return{
-          ...state
-        }
-    }
-      
+    default:
+      return {
+        ...state,
+      };
   }
+};
 
-  export default userReducer
+export default userReducer;

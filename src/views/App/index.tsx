@@ -8,30 +8,32 @@ import { Route, Switch } from "react-router-dom";
 import routes from "../../routes";
 import loginRoutes from "../../routes/user/routeLogin";
 import Error from "../Error";
-const App: React.FC<any> = ({ isAuthenticated }) => {
+import FloatingMessage from "../../components/FloatingMessage";
+import Spacer from "../../components/Spacer";
+const App: React.FC<any> = ({ isAuthenticated, message }) => {
+  console.log(message);
   return (
     <Wrapper>
       <Header />
-      {!isAuthenticated && (
-        <Route
-          component={loginRoutes.component}
-          path={loginRoutes.path}
-          exact
-        />
-      )}
+      {message.message && <FloatingMessage message={message} />}
+      <Spacer height='10px' />
+      {!isAuthenticated &&
+        loginRoutes.map((route) => {
+          return <Route component={route.component} path={route.path} exact />;
+        })}
+
       <Switch>
         {isAuthenticated &&
-          routes.map((route) => (
-            <Route
-              component={route.component}
-              path={route.path}
-              exact
-              key={route.path}
-            />
-          ))}
-        <Route path='*' exact={true}>
-          <Error />
-        </Route>
+          routes.map((route) => {
+            return (
+              <Route
+                component={route.component}
+                path={route.path}
+                exact
+                key={route.path}
+              />
+            );
+          })}
       </Switch>
       <Footer />
     </Wrapper>

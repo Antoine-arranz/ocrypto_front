@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import App from "../views/App";
-import { appSelectors } from "../store/app";
+import selectors from "../store/selectors";
 const mapState = (state: any) => {
   return {
-    isAuthenticated: appSelectors(state),
+    isAuthenticated: selectors.appSelectors(state),
+    message: selectors.messageSelectors(state),
   };
 };
-export default connect(mapState,null)(App);
+export default connect(mapState, null)(App);
