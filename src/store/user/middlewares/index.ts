@@ -1,8 +1,6 @@
 import userActionTypes from "../actionTypes";
 import routes from "./routes";
 import { messageActionTypes } from "../../messages";
-import userActions from "../actions";
-
 const userMiddlewares = ({ api }: any) => {
   const request = routes({ api });
   return (store: any) => (next: any) => async (action: any) => {
@@ -43,6 +41,30 @@ const userMiddlewares = ({ api }: any) => {
           console.log(error);
           next({
             type: userActionTypes.SIGNIN_INPUT_SUBMIT_ERROR,
+            payload: error.message,
+          });
+        }
+        break;
+      case userActionTypes.FORGOTPASSWORD_INPUT_SUBMIT:
+        try {
+          next({ type: userActionTypes.FORGOTPASSWORD_INPUT_SUBMIT_LOADING });
+          const response = await request.forgotPassword({
+            ...action.payload,
+          });
+
+          next({
+            type: userActionTypes.FORGOTPASSWORD_INPUT_SUBMIT_SUCESS,
+            payload: response.data,
+          });
+          next({
+            type: messageActionTypes.SUCCESS_MESSAGE,
+            payload:
+              "You will receive an email with a link where you can choose a new password",
+          });
+        } catch (error) {
+          console.log("error", error);
+          next({
+            type: userActionTypes.FORGOTPASSWORD_INPUT_SUBMIT_ERROR,
             payload: error.message,
           });
         }

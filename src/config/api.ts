@@ -11,6 +11,10 @@ export const routesApi = {
       method: "POST",
       path: "/user/signIn",
     },
+    resetPassword: {
+      method: "POST",
+      path: "/user/resetPassword",
+    },
   },
 };
 

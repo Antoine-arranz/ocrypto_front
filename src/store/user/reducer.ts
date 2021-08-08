@@ -58,6 +58,23 @@ const userReducer = (state: userState = initialState, action: any) => {
         error: action.payload,
       };
 
+    case actionsTypes.FORGOTPASSWORD_INPUT_SUBMIT_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case actionsTypes.FORGOTPASSWORD_INPUT_SUBMIT_SUCESS:
+      return {
+        ...state,
+        loading: false,
+        ...action.payload.result,
+      };
+    case actionsTypes.FORGOTPASSWORD_INPUT_SUBMIT_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     default:
       return {
         ...state,

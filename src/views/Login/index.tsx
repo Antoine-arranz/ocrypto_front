@@ -6,6 +6,7 @@ import Button from "../../components/Button";
 import FormizSimpleInput from "../../components/Formiz";
 import Wrapper from "../../components/Wrapper";
 import { useEffect } from "react";
+import { ClickableText } from "../../components/ClickatableText/ClickableTextStyled";
 
 const Login = ({ handleLogin, user }: any) => {
   const loading = user.loading;
@@ -41,6 +42,7 @@ const Login = ({ handleLogin, user }: any) => {
           <Button type='submit' content='Submit' />
         </form>
       </Formiz>
+      <ClickableText textalign='center'>Forgot your password ?</ClickableText>
     </Wrapper>
   );
 };

@@ -18,6 +18,14 @@ const userRoutes = (api: any) => {
         data: data,
       });
     },
+    forgotPassword(data: string) {
+      const loginApi = routesApi.routesApi.user.resetPassword;
+      return api.api.request({
+        method: loginApi.method,
+        route: loginApi.path,
+        data: data,
+      });
+    },
   };
 };
 export default userRoutes;

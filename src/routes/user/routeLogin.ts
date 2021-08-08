@@ -1,5 +1,6 @@
 import Login from "../../containers/Login";
 import SignIn from "../../containers/SignIn";
+import ForgottenPassword from "../../containers/ForgottenPassword";
 
 const loginRoutes = [
   {
@@ -9,6 +10,10 @@ const loginRoutes = [
   {
     path: "/signIn",
     component: SignIn,
+  },
+  {
+    path: "/forgotten-password",
+    component: ForgottenPassword,
   },
 ];
 

@@ -14,6 +14,12 @@ const userActions = {
       payload,
     };
   },
+  handleForgottenPassword(payload: string) {
+    return {
+      type: actionsTypes.FORGOTPASSWORD_INPUT_SUBMIT,
+      payload,
+    };
+  },
 };
 
 export default userActions;
