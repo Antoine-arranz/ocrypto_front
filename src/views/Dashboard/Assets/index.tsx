@@ -4,7 +4,7 @@ import Wrapper from "../../../components/Wrapper";
 
 const Assets = () => {
   return (
-    <Wrapper margin='auto' width='80%'>
+    <Wrapper width='80%' margin='auto'>
       <Table singleLine>
         <Table.Header>
           <Table.Row>
@@ -30,7 +30,8 @@ const Assets = () => {
           </Table.Row>
         </Table.Body>
       </Table>
-</Wrapper>  );
+    </Wrapper>
+  );
 };
 
 export default Assets;
