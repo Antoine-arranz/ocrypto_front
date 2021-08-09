@@ -1,6 +1,6 @@
-import userActionTypes from "../actionTypes";
-import routes from "./routes";
-import { messageActionTypes } from "../../messages";
+import userActionTypes from '../actionTypes';
+import routes from './routes';
+import { messageActionTypes } from '../../messages';
 const userMiddlewares = ({ api }: any) => {
   const request = routes({ api });
   return (store: any) => (next: any) => async (action: any) => {
@@ -35,7 +35,7 @@ const userMiddlewares = ({ api }: any) => {
           next({
             type: messageActionTypes.SUCCESS_MESSAGE,
             payload:
-              "We have sent you a validation email. You need to validate your account in order to log in.",
+              'We have sent you a validation email. You need to validate your account in order to log in.',
           });
         } catch (error) {
           console.log(error);
@@ -59,14 +59,29 @@ const userMiddlewares = ({ api }: any) => {
           next({
             type: messageActionTypes.SUCCESS_MESSAGE,
             payload:
-              "You will receive an email with a link where you can choose a new password",
+              'You will receive an email with a link where you can choose a new password',
           });
         } catch (error) {
-          console.log("error", error);
+          console.log('error', error);
           next({
             type: userActionTypes.FORGOTPASSWORD_INPUT_SUBMIT_ERROR,
             payload: error.message,
           });
+        }
+        break;
+      case userActionTypes.VALIDATEUSER_SUBMIT:
+        try {
+          next({ type: userActionTypes.VALIDATEUSER_SUBMIT_LOADING });
+          await request.validateUser(action.payload);
+          next({
+            type: userActionTypes.VALIDATEUSER_SUBMIT_SUCESS,
+          });
+        } catch (error) {
+          next({
+            type: userActionTypes.VALIDATEUSER_SUBMIT_ERROR,
+            error,
+          });
+          next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
         }
         break;
       default:

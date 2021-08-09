@@ -1,26 +1,30 @@
-import { Formiz, useForm } from "@formiz/core";
-import { isEmail, isPattern } from "@formiz/validations";
-import React from "react";
-import { Grid } from "semantic-ui-react";
-import FormizSimpleInput from "../../components/Formiz";
-import Button from "../../components/Button";
-import Loader from "../../components/Loader";
+import { Formiz, useForm } from '@formiz/core';
+import { isEmail, isPattern } from '@formiz/validations';
+import React from 'react';
+import { Grid } from 'semantic-ui-react';
+import FormizSimpleInput from '../../components/Formiz';
+import Button from '../../components/Button';
+import Loader from '../../components/Loader';
 
-import Wrapper from "../../components/Wrapper";
-import Spacer from "../../components/Spacer";
-import { UserSignInI } from "../../interface/formSchema/user";
-import { Redirect } from "react-router-dom";
+import Wrapper from '../../components/Wrapper';
+import Spacer from '../../components/Spacer';
+import { UserSignInI } from '../../interface/formSchema/user';
+import { useEffect } from 'react';
 
-const SingIn: React.FC<any> = ({ user, handleSubmitSignInForm,history }) => {
-  console.log('history',history)
+const SingIn: React.FC<any> = ({ user, handleSubmitSignInForm, history }) => {
   const signUpForm = useForm();
   const save = async (payload: UserSignInI) => {
     await handleSubmitSignInForm(payload);
   };
+
+  useEffect(() => {
+    if (user.firstname) {
+      history.push('/');
+    }
+  }, [user]);
   return (
     <Wrapper width='50%' margin='auto'>
       {user.loading && <Loader />}
-      {user.firstName && <Redirect to='/' />}
       <Spacer height='10px' />
       <Formiz connect={signUpForm} onValidSubmit={save}>
         <form onSubmit={signUpForm.submit}>
@@ -65,7 +69,7 @@ const SingIn: React.FC<any> = ({ user, handleSubmitSignInForm,history }) => {
                   validations={[
                     {
                       rule: isEmail(),
-                      message: "This is not a valid email",
+                      message: 'This is not a valid email',
                     },
                   ]}
                 />
@@ -100,7 +104,7 @@ const SingIn: React.FC<any> = ({ user, handleSubmitSignInForm,history }) => {
                       rule: (value: any) =>
                         signUpForm.values.password === value,
                       deps: [signUpForm.values.password],
-                      message: "Passwords do not match",
+                      message: 'Passwords do not match',
                     },
                   ]}
                 />

@@ -1,4 +1,4 @@
-import actionsTypes from "./actionTypes";
+import actionsTypes from './actionTypes';
 
 export interface userState {
   firstName: string;
@@ -11,13 +11,13 @@ export interface userState {
 }
 
 const initialState: userState = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
   isAuthenticated: false,
   loading: false,
-  error: "",
+  error: '',
 };
 
 const userReducer = (state: userState = initialState, action: any) => {
@@ -70,6 +70,22 @@ const userReducer = (state: userState = initialState, action: any) => {
         ...action.payload.result,
       };
     case actionsTypes.FORGOTPASSWORD_INPUT_SUBMIT_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case actionsTypes.VALIDATEUSER_SUBMIT_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case actionsTypes.VALIDATEUSER_SUBMIT_SUCESS:
+      return {
+        ...state,
+        loading: false,
+      };
+    case actionsTypes.VALIDATEUSER_SUBMIT_ERROR:
       return {
         ...state,
         loading: false,

@@ -1,8 +1,9 @@
-import React from "react";
-import Wrapper from "../../components/Wrapper";
-import { Header as SemanticHeader, Dropdown, Menu } from "semantic-ui-react";
+import React from 'react';
+import Wrapper from '../../components/Wrapper';
+import { Header as SemanticHeader, Dropdown, Menu } from 'semantic-ui-react';
 
-const Header = ({ isAuthenticated }: any) => {
+const Header = ({ isAuthenticated, history }: any) => {
+  console.log(history);
   return (
     <Wrapper>
       <SemanticHeader as='h1' block>
@@ -18,7 +19,14 @@ const Header = ({ isAuthenticated }: any) => {
           {isAuthenticated ? (
             <Menu.Item name='account' active position='right' />
           ) : (
-            <Menu.Item name='create Account' active position='right' />
+            <Menu.Item
+              name='create Account'
+              active
+              position='right'
+              onClick={() => {
+                history.push('/signIn');
+              }}
+            />
           )}
         </Menu>
       </SemanticHeader>

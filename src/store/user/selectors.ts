@@ -1,5 +1,9 @@
-const usersSelector = (state: any) => {
+const user = (state: any) => {
   return state.userReducer;
 };
 
-export default usersSelector;
+const isAuthenticated = (state: any) => {
+  return state.userReducer.isAuthenticated;
+};
+
+export default { user, isAuthenticated };

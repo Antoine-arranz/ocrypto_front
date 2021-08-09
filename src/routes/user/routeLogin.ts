@@ -1,20 +1,21 @@
-import Login from "../../containers/Login";
-import SignIn from "../../containers/SignIn";
-import ForgottenPassword from "../../containers/ForgottenPassword";
-
+import Login from '../../containers/Login';
+import SignIn from '../../containers/SignIn';
+import ForgottenPassword from '../../containers/ForgottenPassword';
+import userPaths from './paths';
 const loginRoutes = [
   {
-    path: "/",
+    path: userPaths.login,
     component: Login,
   },
   {
-    path: "/signIn",
+    path: userPaths.signIn,
     component: SignIn,
   },
   {
-    path: "/forgotten-password",
+    path: userPaths.forgottenPassword,
     component: ForgottenPassword,
   },
+  { path: userPaths.validateAccount, component: Login },
 ];
 
 export default loginRoutes;

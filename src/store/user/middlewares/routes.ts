@@ -1,5 +1,5 @@
-import routesApi from "../../../config";
-import { UserLoginI, UserSignInI } from "../../../interface/formSchema/user";
+import routesApi from '../../../config';
+import { UserLoginI, UserSignInI } from '../../../interface/formSchema/user';
 const userRoutes = (api: any) => {
   return {
     login(data: UserLoginI) {
@@ -24,6 +24,16 @@ const userRoutes = (api: any) => {
         method: loginApi.method,
         route: loginApi.path,
         data: data,
+      });
+    },
+    validateUser(data: any) {
+      console.log('caca', data);
+      const loginApi = routesApi.routesApi.user.validateUser;
+      console.log(loginApi.path);
+      return api.api.request({
+        method: loginApi.method,
+        route: loginApi.path,
+        params: data.params,
       });
     },
   };

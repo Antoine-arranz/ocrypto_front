@@ -1,5 +1,5 @@
-import { UserLoginI, UserSignInI } from "../../interface/formSchema/user";
-import actionsTypes from "./actionTypes";
+import { UserLoginI, UserSignInI } from '../../interface/formSchema/user';
+import actionsTypes from './actionTypes';
 
 const userActions = {
   loginInputSubmit(payload: UserLoginI) {
@@ -18,6 +18,12 @@ const userActions = {
     return {
       type: actionsTypes.FORGOTPASSWORD_INPUT_SUBMIT,
       payload,
+    };
+  },
+  validateUser(data: any) {
+    return {
+      type: actionsTypes.VALIDATEUSER_SUBMIT,
+      payload: data,
     };
   },
 };
