@@ -19,12 +19,12 @@ const Login: React.FC<any> = ({
   useEffect(() => {
     if (match.params.token) {
       validateUser(match.params.token);
-      history.push(path.validateAccount);
+      history.push('/login');
     }
     if (user.isAuthenticated) {
       history.push('/');
     }
-  }, [user.isAuthenticated]);
+  }, [user]);
 
   const loading = user.loading;
   const loginForm = useForm();

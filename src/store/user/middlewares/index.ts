@@ -1,6 +1,7 @@
 import userActionTypes from '../actionTypes';
 import routes from './routes';
 import { messageActionTypes } from '../../messages';
+import actionsTypes from '../actionTypes';
 const userMiddlewares = ({ api }: any) => {
   const request = routes({ api });
   return (store: any) => (next: any) => async (action: any) => {
@@ -38,10 +39,13 @@ const userMiddlewares = ({ api }: any) => {
               'We have sent you a validation email. You need to validate your account in order to log in.',
           });
         } catch (error) {
-          console.log(error);
           next({
             type: userActionTypes.SIGNIN_INPUT_SUBMIT_ERROR,
             payload: error.message,
+          });
+          next({
+            type: messageActionTypes.ERROR_MESSAGE,
+            payload: error,
           });
         }
         break;
@@ -62,11 +66,11 @@ const userMiddlewares = ({ api }: any) => {
               'You will receive an email with a link where you can choose a new password',
           });
         } catch (error) {
-          console.log('error', error);
           next({
             type: userActionTypes.FORGOTPASSWORD_INPUT_SUBMIT_ERROR,
             payload: error.message,
           });
+          next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
         }
         break;
       case userActionTypes.VALIDATEUSER_SUBMIT:
@@ -76,9 +80,35 @@ const userMiddlewares = ({ api }: any) => {
           next({
             type: userActionTypes.VALIDATEUSER_SUBMIT_SUCESS,
           });
+          next({
+            type: messageActionTypes.SUCCESS_MESSAGE,
+            payload: 'your account has been validated',
+          });
         } catch (error) {
           next({
             type: userActionTypes.VALIDATEUSER_SUBMIT_ERROR,
+            error,
+          });
+          next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
+        }
+        break;
+      case userActionTypes.RESET_PASSWORD_INPUT_SUBMIT:
+        try {
+          next({ type: userActionTypes.RESET_PASSWORD_INPUT_LOADING });
+          const response = await request.updatePassword({
+            ...action.payload,
+          });
+          next({
+            type: userActionTypes.RESET_PASSWORD_INPUT_SUCESS,
+            payload: response.data,
+          });
+          next({
+            type: messageActionTypes.SUCCESS_MESSAGE,
+            payload: 'your password has been changed',
+          });
+        } catch (error) {
+          next({
+            type: userActionTypes.RESET_PASSWORD_INPUT_ERROR,
             error,
           });
           next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });

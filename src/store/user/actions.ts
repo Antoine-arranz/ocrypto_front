@@ -26,6 +26,12 @@ const userActions = {
       payload: data,
     };
   },
+  resetPassword(data: any) {
+    return {
+      type: actionsTypes.RESET_PASSWORD_INPUT_SUBMIT,
+      payload: data,
+    };
+  },
 };
 
 export default userActions;

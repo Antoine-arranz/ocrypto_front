@@ -27,13 +27,20 @@ const userRoutes = (api: any) => {
       });
     },
     validateUser(data: any) {
-      console.log('caca', data);
       const loginApi = routesApi.routesApi.user.validateUser;
-      console.log(loginApi.path);
       return api.api.request({
         method: loginApi.method,
         route: loginApi.path,
         params: data.params,
+      });
+    },
+    updatePassword(data: any) {
+      const loginApi = routesApi.routesApi.user.updatePassword;
+      return api.api.request({
+        method: loginApi.method,
+        route: loginApi.path,
+        params: { token: data.params.token },
+        data: { password: data.params.password },
       });
     },
   };

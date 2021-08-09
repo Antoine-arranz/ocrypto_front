@@ -6,7 +6,7 @@ import selectors from '../store/selectors';
 const mapState = (state: any) => {
   return {
     user: selectors.userSelectors.user(state),
-    isAuthenticated: selectors.userSelectors.isAuthenticated(state),
+    // isAuthenticated: selectors.userSelectors.isAuthenticated(state),
   };
 };
 

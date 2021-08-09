@@ -3,7 +3,6 @@ import Wrapper from '../../components/Wrapper';
 import { Header as SemanticHeader, Dropdown, Menu } from 'semantic-ui-react';
 
 const Header = ({ isAuthenticated, history }: any) => {
-  console.log(history);
   return (
     <Wrapper>
       <SemanticHeader as='h1' block>

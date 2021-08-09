@@ -34,6 +34,7 @@ const userReducer = (state: userState = initialState, action: any) => {
         isAuthenticated: true,
         loading: false,
       };
+      break;
     case actionsTypes.LOGIN_INPUT_SUBMIT_ERROR:
       return {
         ...state,
@@ -89,7 +90,6 @@ const userReducer = (state: userState = initialState, action: any) => {
       return {
         ...state,
         loading: false,
-        error: action.payload,
       };
     default:
       return {

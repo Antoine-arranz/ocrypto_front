@@ -13,6 +13,11 @@ const actions = {
       payload: { status, message },
     };
   },
+  resetMessage() {
+    return {
+      type: actionTypes.RESET,
+    };
+  },
 };
 
-export default actions
+export default actions;

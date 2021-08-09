@@ -1,4 +1,5 @@
-import actionTypes from "./actionsTypes";
+import actionsTypes from '../user/actionTypes';
+import actionTypes from './actionsTypes';
 
 const INITIAL_STATE = {
   success: false,
@@ -22,6 +23,15 @@ const reducer = (state = INITIAL_STATE, action: any) => {
         error: true,
         success: false,
       };
+    case actionTypes.RESET:
+      return {
+        ...state,
+        error: false,
+        succes: false,
+        httpCode: null,
+        message: null,
+      };
+
     default:
       return state;
   }

@@ -9,19 +9,13 @@ import Loader from '../../components/Loader';
 import Wrapper from '../../components/Wrapper';
 import Spacer from '../../components/Spacer';
 import { UserSignInI } from '../../interface/formSchema/user';
-import { useEffect } from 'react';
-
+import paths from '../../routes/user/paths';
 const SingIn: React.FC<any> = ({ user, handleSubmitSignInForm, history }) => {
   const signUpForm = useForm();
   const save = async (payload: UserSignInI) => {
     await handleSubmitSignInForm(payload);
+    history.push(paths.login);
   };
-
-  useEffect(() => {
-    if (user.firstname) {
-      history.push('/');
-    }
-  }, [user]);
   return (
     <Wrapper width='50%' margin='auto'>
       {user.loading && <Loader />}

@@ -1,17 +1,22 @@
-import React from "react";
-import { Formiz, useForm } from "@formiz/core";
-import { isEmail } from "@formiz/validations";
+import React from 'react';
+import { Formiz, useForm } from '@formiz/core';
+import { isEmail } from '@formiz/validations';
 
-import Button from "../../components/Button";
-import Wrapper from "../../components/Wrapper";
-import Spacer from "../../components/Spacer";
-import FormizSimpleInput from "../../components/Formiz";
+import Button from '../../components/Button';
+import Wrapper from '../../components/Wrapper';
+import Spacer from '../../components/Spacer';
+import FormizSimpleInput from '../../components/Formiz';
+import { path } from '../../routes/user';
 
-const ForgottenPassword: React.FC<any> = ({ handleForgottenPassword,history }) => {
+const ForgottenPassword: React.FC<any> = ({
+  handleForgottenPassword,
+  history,
+}) => {
   const forgottenPasswordForm = useForm();
 
   const submit = async (data: any) => {
     handleForgottenPassword(data);
+    history.push(path.login);
   };
 
   return (
@@ -35,7 +40,7 @@ const ForgottenPassword: React.FC<any> = ({ handleForgottenPassword,history }) =
             validations={[
               {
                 rule: isEmail(),
-                message: "This is not a valid email",
+                message: 'This is not a valid email',
               },
             ]}
           />

@@ -8,24 +8,21 @@ import { createBrowserHistory } from 'history';
 
 import routes from '../../routes';
 import loginRoutes from '../../routes/user/routeLogin';
-import FloatingMessage from '../../components/FloatingMessage';
+import FloatingMessage from '../../containers/FloatingMessage';
 import Spacer from '../../components/Spacer';
+import MainWrapper from '../../components/MainWrapper';
 const history = createBrowserHistory();
 
 const App: React.FC<any> = ({ isAuthenticated, message }) => {
-  console.log(message);
   return (
     <Router history={history}>
-      <Wrapper>
-        <Header />
+      <Header />
+      <MainWrapper>
         {message.message && <FloatingMessage message={message} />}
-        <Spacer height='10px' />
-        {!isAuthenticated &&
-          loginRoutes.map((route) => {
-            return (
-              <Route component={route.component} path={route.path} exact />
-            );
-          })}
+        <Spacer height='100px' />
+        {loginRoutes.map((route) => {
+          return <Route component={route.component} path={route.path} exact />;
+        })}
 
         <Switch>
           {isAuthenticated &&
@@ -40,8 +37,8 @@ const App: React.FC<any> = ({ isAuthenticated, message }) => {
               );
             })}
         </Switch>
-        <Footer />
-      </Wrapper>
+      </MainWrapper>
+      <Footer />
     </Router>
   );
 };

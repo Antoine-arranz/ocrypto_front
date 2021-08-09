@@ -1,5 +1,5 @@
-const messageSelectors = (state: any) => {
+const message = (state: any) => {
   return state.messageReducer;
 };
 
-export default messageSelectors;
+export default { message };

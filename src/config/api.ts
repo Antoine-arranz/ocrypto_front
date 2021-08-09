@@ -19,6 +19,10 @@ export const routesApi = {
       method: 'GET',
       path: '/user/validate/:token',
     },
+    updatePassword: {
+      method: 'PATCH',
+      path: '/user/updatePassword/:token',
+    },
   },
 };
 
