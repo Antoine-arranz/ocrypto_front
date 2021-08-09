@@ -7,7 +7,7 @@ import Wrapper from "../../components/Wrapper";
 import Spacer from "../../components/Spacer";
 import FormizSimpleInput from "../../components/Formiz";
 
-const ForgottenPassword: React.FC<any> = ({ handleForgottenPassword }) => {
+const ForgottenPassword: React.FC<any> = ({ handleForgottenPassword,history }) => {
   const forgottenPasswordForm = useForm();
 
   const submit = async (data: any) => {

@@ -8,7 +8,7 @@ import Wrapper from "../../components/Wrapper";
 import { useEffect } from "react";
 import { ClickableText } from "../../components/ClickatableText/ClickableTextStyled";
 
-const Login = ({ handleLogin, user }: any) => {
+const Login:React.FC<any> = ({ handleLogin, user, history }) => {
   const loading = user.loading;
   const loginForm = useForm();
   const signIn = async (data: any) => {

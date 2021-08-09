@@ -10,17 +10,13 @@ import  configureStore  from './store';
 import services from './services';
 import config from './config';
 
-import { BrowserRouter as Router } from "react-router-dom";
 const servicesContainer = services(config);
 const store = configureStore({}, servicesContainer);
-
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
         <App />
-      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

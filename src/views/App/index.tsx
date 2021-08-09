@@ -4,22 +4,26 @@ import Footer from "../Footer";
 import Wrapper from "../../components/Wrapper";
 import "semantic-ui-css/semantic.min.css";
 import "./styles.scss";
-import { Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+
 import routes from "../../routes";
 import loginRoutes from "../../routes/user/routeLogin";
-import Error from "../Error";
 import FloatingMessage from "../../components/FloatingMessage";
 import Spacer from "../../components/Spacer";
+const history = createBrowserHistory()
+
 const App: React.FC<any> = ({ isAuthenticated, message }) => {
   console.log(message);
   return (
+    <Router history={history}>
     <Wrapper>
       <Header />
       {message.message && <FloatingMessage message={message} />}
       <Spacer height='10px' />
       {!isAuthenticated &&
         loginRoutes.map((route) => {
-          return <Route component={route.component} path={route.path} exact />;
+          return <Route component={route.component} path={route.path} exact/>;
         })}
 
       <Switch>
@@ -37,6 +41,7 @@ const App: React.FC<any> = ({ isAuthenticated, message }) => {
       </Switch>
       <Footer />
     </Wrapper>
+    </Router>
   );
 };
 

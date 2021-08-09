@@ -11,11 +11,11 @@ import Spacer from "../../components/Spacer";
 import { UserSignInI } from "../../interface/formSchema/user";
 import { Redirect } from "react-router-dom";
 
-const SingIn: React.FC<any> = ({ user, handleSubmitSignInForm }) => {
+const SingIn: React.FC<any> = ({ user, handleSubmitSignInForm,history }) => {
+  console.log('history',history)
   const signUpForm = useForm();
   const save = async (payload: UserSignInI) => {
     await handleSubmitSignInForm(payload);
-    console.log("ici");
   };
   return (
     <Wrapper width='50%' margin='auto'>
