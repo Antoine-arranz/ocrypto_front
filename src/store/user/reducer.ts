@@ -1,3 +1,4 @@
+import { WalletI } from '../../interface/wallet';
 import actionsTypes from './actionTypes';
 
 export interface userState {
@@ -8,6 +9,7 @@ export interface userState {
   isAuthenticated: boolean;
   loading: boolean;
   error: string;
+  wallets: Array<WalletI>;
 }
 
 const initialState: userState = {
@@ -18,6 +20,7 @@ const initialState: userState = {
   isAuthenticated: false,
   loading: false,
   error: '',
+  wallets: [],
 };
 
 const userReducer = (state: userState = initialState, action: any) => {
@@ -90,6 +93,22 @@ const userReducer = (state: userState = initialState, action: any) => {
       return {
         ...state,
         loading: false,
+      };
+    case actionsTypes.GETWALLETS_SUCESS:
+      return {
+        ...state,
+        loading: false,
+        wallets: [...action.payload.result],
+      };
+    case actionsTypes.GETWALLETS_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case actionsTypes.GETWALLETS_ERROR:
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return {

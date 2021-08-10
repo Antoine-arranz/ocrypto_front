@@ -114,6 +114,18 @@ const userMiddlewares = ({ api }: any) => {
           next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
         }
         break;
+      case actionsTypes.GETWALLETS:
+        try {
+          next({ type: actionsTypes.GETWALLETS_LOADING });
+          const response = await request.getWallets({ ...action.payload });
+          next({
+            type: userActionTypes.GETWALLETS_SUCESS,
+            payload: response.data,
+          });
+        } catch (error) {
+          next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
+        }
+        break;
       default:
         next(action);
         break;

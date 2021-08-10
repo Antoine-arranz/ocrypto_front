@@ -24,6 +24,20 @@ export const routesApi = {
       path: '/user/updatePassword/:token',
     },
   },
+  wallet: {
+    addNew: {
+      method: 'POST',
+      path: '/wallet/:userId/new',
+    },
+    getAll: {
+      method: 'GET',
+      path: '/wallet/:userId',
+    },
+    delete: {
+      method: 'DELETE',
+      path: '/wallet/:walletId',
+    },
+  },
 };
 
 export default routesApi;

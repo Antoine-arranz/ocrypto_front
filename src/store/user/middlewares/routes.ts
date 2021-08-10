@@ -43,6 +43,14 @@ const userRoutes = (api: any) => {
         data: { password: data.params.password },
       });
     },
+    getWallets(data: any) {
+      const walletAPI = routesApi.routesApi.wallet.getAll;
+      return api.api.request({
+        method: walletAPI.method,
+        route: walletAPI.path,
+        params: { userId: data.params.userId.params.userId },
+      });
+    },
   };
 };
 export default userRoutes;

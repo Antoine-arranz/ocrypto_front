@@ -22,7 +22,7 @@ const Login: React.FC<any> = ({
       history.push('/login');
     }
     if (user.isAuthenticated) {
-      history.push('/');
+      history.push('/wallets');
     }
   }, [user]);
 
