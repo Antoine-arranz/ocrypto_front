@@ -9,7 +9,7 @@ export interface walletState {
   loading: boolean;
 }
 
-const initialState = {
+const initialState: walletState = {
   wallet: [
     {
       name: '',
@@ -28,22 +28,23 @@ const walletReducer = (state = initialState, action: any) => {
       return {
         ...state,
         loading: false,
+        wallet: [...state.wallet, action.payload],
       };
     case walletActions.DELETE_WALLET_SUBMIT_LOADING:
       return {
         ...state,
-        loading: false,
+        loading: true,
       };
     case walletActions.DELETE_WALLET_SUBMIT_SUCESS:
       return {
         ...state,
-        loading: true,
+        loading: false,
       };
     case walletActions.GETWALLETS_SUCESS:
       return {
         ...state,
         loading: false,
-        wallet: [...action.payload.result],
+        wallet: action.payload.result,
       };
     case walletActions.GETWALLETS_LOADING:
       return {

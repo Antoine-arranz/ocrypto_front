@@ -12,7 +12,6 @@ import config from './config';
 import { PersistGate } from 'redux-persist/integration/react';
 
 const servicesContainer = services(config);
-console.log('service', servicesContainer);
 const { store, persistor } = configureStore({}, servicesContainer);
 
 ReactDOM.render(

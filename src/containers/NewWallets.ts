@@ -10,7 +10,6 @@ const mapState = (state: any) => {
 const dispatchState = (dispatch: any) => {
   return {
     addNewWallet: (userId: number, value: any) => {
-      console.log('coucou');
       dispatch(
         walletActions.addNewWallet({
           params: { userId: userId },

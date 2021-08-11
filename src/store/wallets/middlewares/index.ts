@@ -3,20 +3,23 @@ import routes from './routes';
 import { messageActionTypes } from '../../messages';
 import walletActions from '../actions';
 import userActions from '../../../store/user/actionTypes';
+import {} from '../../../';
+import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 
 const walletMiddlewares = ({ api }: any) => {
   const request = routes({ api });
   return (store: any) => (next: any) => async (action: any) => {
     const state = store.getState();
+    const { dispatch } = store;
 
-    console.log(action.type);
     switch (action.type) {
       case walletActionsTypes.ADD_NEW_WALLET_SUBMIT:
         try {
           next({ type: walletActionsTypes.ADD_NEW_WALLET_SUBMIT_LOADING });
-          await request.addNewWallet({ ...action.payload });
+          const response = await request.addNewWallet({ ...action.payload });
           next({
             type: walletActionsTypes.ADD_NEW_WALLET_SUBMIT_SUCESS,
+            payload: response.data.result,
           });
         } catch (error) {
           next({ type: walletActionsTypes.ADD_NEW_WALLET_SUBMIT_ERROR });
@@ -28,6 +31,11 @@ const walletMiddlewares = ({ api }: any) => {
           next({ type: walletActionsTypes.DELETE_WALLET_SUBMIT_LOADING });
           await request.deleteWallet({ ...action.payload });
           next({ type: walletActionsTypes.DELETE_WALLET_SUBMIT_SUCESS });
+          dispatch(
+            walletActions.getAllWallet({
+              userId: action.payload.params.data.params.userId,
+            })
+          );
         } catch (error) {
           next({ type: walletActionsTypes.DELETE_WALLET_SUBMIT_ERROR });
           next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
@@ -36,7 +44,7 @@ const walletMiddlewares = ({ api }: any) => {
       case walletActionsTypes.GETWALLETS:
         try {
           next({ type: walletActionsTypes.GETWALLETS_LOADING });
-          const response = await request.getWallets({ ...action.payload });
+          const response = await request.getWallets(action.payload);
           next({
             type: walletActionsTypes.GETWALLETS_SUCESS,
             payload: response.data,

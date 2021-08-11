@@ -14,16 +14,21 @@ const Wallets = ({
   getWallets,
   deleteWallet,
 }: any) => {
-  console.log('wallets', wallets);
-  const deleteButton = (walletId: number) => {
-    deleteWallet({ params: { walletId } });
+  const [caca, setCaca] = useState([]);
+  const deleteButton = (walletId: number, userId: number) => {
+    deleteWallet({ params: { userId: userId, walletId: walletId } });
   };
   useEffect(() => {
-    getWallets({ params: { userId: user.id } });
-  }, [wallets]);
+    getWallets({ userId: user.id });
+  }, []);
+
+  useEffect(() => {
+    setCaca(wallets);
+  }, []);
   return (
     <Wrapper>
       <Divider hidden />
+      {loading && <Loader />}
       <Container>
         <Wrapper display='flex' justifyContent='space-between'>
           <LinkButton
@@ -66,7 +71,9 @@ const Wallets = ({
                             icon='trash alternate outline'
                             labelPosition='right'
                             path={`/wallet/${user.id}/delete`}
-                            onClick={() => deleteButton(wallet.id)}
+                            onClick={() =>
+                              deleteButton(wallet.id, wallet.User_Id)
+                            }
                           />
                         </Btn.Group>
                       </Table.Cell>

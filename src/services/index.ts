@@ -3,7 +3,6 @@ import storage from '../config/storage';
 const services = (config: any) => {
   const services: any = {};
   services.storage = storage();
-  console.log('azeaea', storage);
   services.api = api({ baseURL: config.routesApi.url });
 
   return {

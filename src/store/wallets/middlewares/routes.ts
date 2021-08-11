@@ -11,22 +11,19 @@ const walletRoutes = (api: any) => {
       });
     },
     getWallets(data: any) {
-      console.log('data', data);
       const walletApi = routesApi.routesApi.wallet.getAll;
       return api.api.request({
         method: walletApi.method,
         route: walletApi.path,
-        params: { userId: data.params.userId.params.userId },
-        data: { data: data.params.data },
+        params: data,
       });
     },
     deleteWallet(data: any) {
-      console.log(data);
       const walletApi = routesApi.routesApi.wallet.delete;
       return api.api.request({
         method: walletApi.method,
         route: walletApi.path,
-        params: { walletId: data.params.walletId.params.walletId },
+        params: { walletId: data.params.data.params.walletId },
       });
     },
   };

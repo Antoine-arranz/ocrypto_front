@@ -9,7 +9,6 @@ const NewWallets = ({ addNewWallet, user, history }: any) => {
   const signUpForm = useForm();
 
   const save = (value: any) => {
-    console.log('save');
     addNewWallet({ params: { userId: user.id }, data: { name: value } });
     history.push('/wallets');
   };
