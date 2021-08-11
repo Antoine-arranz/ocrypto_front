@@ -6,8 +6,6 @@ const userMiddlewares = ({ api }: any) => {
   const request = routes({ api });
   return (store: any) => (next: any) => async (action: any) => {
     const state = store.getState();
-    next(action);
-
     switch (action.type) {
       case userActionTypes.LOGIN_INPUT_SUBMIT:
         try {

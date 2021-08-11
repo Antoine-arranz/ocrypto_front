@@ -8,7 +8,12 @@ const Header = ({ isAuthenticated, history }: any) => {
       <SemanticHeader as='h1' block>
         <Menu secondary horizontal='true'>
           OCRYPTO
-          <Menu.Item name='home' />
+          <Menu.Item
+            name='home'
+            onClick={() => {
+              history.push('/login');
+            }}
+          />
           {isAuthenticated && <Menu.Item name='add events' />}
           {isAuthenticated && (
             <Dropdown item text='Wallets'>

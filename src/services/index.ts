@@ -1,14 +1,16 @@
-import api from "./api";
-
-const services =  (config:any) => {
+import api from './api';
+import storage from '../config/storage';
+const services = (config: any) => {
   const services: any = {};
-  services.api = api({ baseURL: config.routesApi.url});
+  services.storage = storage();
+  console.log('azeaea', storage);
+  services.api = api({ baseURL: config.routesApi.url });
 
   return {
-    get(name:any) {
+    get(name: any) {
       return services[name];
     },
   };
 };
 
-export default services
+export default services;

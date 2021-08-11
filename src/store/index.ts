@@ -1,29 +1,37 @@
 // == Import : npm
-import { createStore, compose, applyMiddleware } from "redux";
+import { createStore, compose, applyMiddleware } from 'redux';
+import { persistReducer, persistStore } from 'redux-persist';
+import { apiMiddlewares } from './middlewares';
+import thunk from 'redux-thunk';
+import rootReducer from './rootReducers';
+import storage from 'redux-persist/lib/storage';
+const composeEnhancers =
+  //@ts-ignore
+  (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
+    //@ts-ignore
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      trace: true,
+      traceLimit: 25,
+    })) ||
+  compose;
 
-import { apiMiddlewares } from "./middlewares";
-import thunk from "redux-thunk";
-import rootReducer from "./rootReducers";
-
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-  }
-}
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const configureStore = (defaultState:any, services:any) =>{
+const configureStore = (defaultState: any, services: any) => {
   const api = services.get('api');
+  //const storage = services.get('storage');
+  const config = {
+    key: 'ocrypto',
+    storage,
+  };
+
+  const persistedReducer = persistReducer(config, rootReducer);
   const store = createStore(
-    rootReducer,
+    persistedReducer,
     defaultState,
-    composeEnhancers(applyMiddleware(thunk, ...apiMiddlewares({api})))
+    composeEnhancers(applyMiddleware(thunk, ...apiMiddlewares({ api })))
   );
 
-  return store
-  
+  const persistor = persistStore(store);
+  return { store, persistor };
+};
 
-}
-
-export default configureStore
+export default configureStore;

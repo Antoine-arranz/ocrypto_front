@@ -12,7 +12,7 @@ const Wallets = ({ user, history, getWallets, deleteWallet }: any) => {
   };
   useEffect(() => {
     getWallets({ params: { userId: user.id } });
-  }, [user.wallet]);
+  }, []);
   return (
     <Wrapper>
       <Divider hidden />

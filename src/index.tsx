@@ -1,25 +1,29 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./containers/App";
-import reportWebVitals from "./reportWebVitals";
-import "./styles/_reset.scss";
-import { Provider } from "react-redux";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './containers/App';
+import reportWebVitals from './reportWebVitals';
+import './styles/_reset.scss';
+import { Provider } from 'react-redux';
 
-import  configureStore  from './store';
+import configureStore from './store';
 
 import services from './services';
 import config from './config';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const servicesContainer = services(config);
-const store = configureStore({}, servicesContainer);
+console.log('service', servicesContainer);
+const { store, persistor } = configureStore({}, servicesContainer);
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
         <App />
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 reportWebVitals();

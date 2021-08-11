@@ -18,8 +18,6 @@ const initialState = {
   ],
 };
 const walletReducer = (state = initialState, action: any) => {
-  if (action.payload) {
-  }
   switch (action.type) {
     case walletActions.ADD_NEW_WALLET_SUBMIT_LOADING:
       return {
@@ -39,6 +37,7 @@ const walletReducer = (state = initialState, action: any) => {
     case walletActions.DELETE_WALLET_SUBMIT_SUCESS:
       return {
         ...state,
+        loading: true,
       };
     default:
       return {
