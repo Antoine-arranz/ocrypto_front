@@ -50,6 +50,27 @@ const walletMiddlewares = ({ api }: any) => {
             payload: response.data,
           });
         } catch (error) {
+          next({
+            type: walletActionsTypes.GETWALLETS_ERROR,
+          });
+          next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
+        }
+        break;
+      case walletActionsTypes.UPDATE_WALLET_SUBMIT:
+        try {
+          next({ type: walletActionsTypes.UPDATE_WALLET_LOADING });
+          const response = await request.updateWallet(action.payload);
+          next({
+            type: walletActionsTypes.UPDATE_WALLET_SUCCESS,
+            payload: response.data,
+          });
+          dispatch(
+            walletActions.getAllWallet({
+              userId: action.payload.params.userId,
+            })
+          );
+        } catch (error) {
+          next({ type: walletActionsTypes.UPDATE_WALLET_ERROR });
           next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
         }
         break;

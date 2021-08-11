@@ -56,6 +56,21 @@ const walletReducer = (state = initialState, action: any) => {
         ...state,
         loading: true,
       };
+    case walletActions.UPDATE_WALLET_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case walletActions.UPDATE_WALLET_ERROR:
+      return {
+        ...state,
+        loading: false,
+      };
+    case walletActions.UPDATE_WALLET_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return {
         ...state,

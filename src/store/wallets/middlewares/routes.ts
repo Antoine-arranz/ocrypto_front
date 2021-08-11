@@ -26,6 +26,15 @@ const walletRoutes = (api: any) => {
         params: { walletId: data.params.data.params.walletId },
       });
     },
+    updateWallet(data: any) {
+      const walletApi = routesApi.routesApi.wallet.update;
+      return api.api.request({
+        method: walletApi.method,
+        route: walletApi.path,
+        params: { walletId: data.params.walletId },
+        data: { name: data.value.name },
+      });
+    },
   };
 };
 export default walletRoutes;

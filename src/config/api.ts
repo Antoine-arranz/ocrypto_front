@@ -37,6 +37,10 @@ export const routesApi = {
       method: 'DELETE',
       path: '/wallet/:walletId',
     },
+    update: {
+      method: 'PATCH',
+      path: '/wallet/:walletId',
+    },
   },
 };
 

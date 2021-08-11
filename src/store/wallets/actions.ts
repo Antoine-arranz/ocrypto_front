@@ -19,6 +19,12 @@ const walletActions = {
       payload,
     };
   },
+  updateWallet(payload: any) {
+    return {
+      type: walletTypes.UPDATE_WALLET_SUBMIT,
+      payload,
+    };
+  },
 };
 
 export default walletActions;

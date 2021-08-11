@@ -7,6 +7,10 @@ import Wrapper from '../../components/Wrapper';
 import TableSpacedRows from '../../components/TableSpacedRows';
 import Button from '../../components/Button';
 import NewWallets from '../../containers/NewWallets';
+import UpdateWallet from '../../containers/UpdateWallet';
+import { walletReducer } from '../../store/wallets';
+import { Formiz, useForm } from '@formiz/core';
+import FormizSimpleInput from '../../components/Formiz';
 const Wallets = ({
   user,
   wallets,
@@ -16,6 +20,10 @@ const Wallets = ({
   deleteWallet,
 }: any) => {
   const [walletModal, setWalletModal] = useState(false);
+  const [updateWalletModal, setUpdateWalletModal] = useState(false);
+  const [walletUpdatedId, setWalletUpdatedId] = useState(null);
+  const [walletUpdatedName, setWalletUpdatedName] = useState(null);
+
   const deleteButton = (walletId: number, userId: number) => {
     deleteWallet({ params: { userId: userId, walletId: walletId } });
   };
@@ -43,6 +51,14 @@ const Wallets = ({
         open={walletModal}
         handleClose={() => setWalletModal(false)}
       />
+      <UpdateWallet
+        open={updateWalletModal}
+        handleClose={() => setUpdateWalletModal(false)}
+        walletId={walletUpdatedId}
+        walletName={walletUpdatedName}
+        userId={user.id}
+      />
+      ;
       {
         <Container>
           <TableSpacedRows sortable>
@@ -63,11 +79,17 @@ const Wallets = ({
                       <Table.Cell>{wallet.name}</Table.Cell>
                       <Table.Cell textAlign='right'>
                         <Btn.Group horizontal widths='one'>
-                          <LinkButton
+                          <Button
                             content='Update'
                             icon='edit outline'
                             labelPosition='right'
-                            path={`/companies/${wallet.id}`}
+                            walletName={wallet.name}
+                            walletId={wallet.id}
+                            onClick={() => {
+                              setUpdateWalletModal(true);
+                              setWalletUpdatedId(wallet.id);
+                              setWalletUpdatedName(wallet.name);
+                            }}
                           />
                           <Button
                             color='red'
