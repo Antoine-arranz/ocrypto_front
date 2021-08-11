@@ -6,8 +6,8 @@ const walletRoutes = (api: any) => {
       return api.api.request({
         method: walletApi.method,
         route: walletApi.path,
-        params: { userId: data.params.userId.params.userId },
-        data: { data: data.params.userId.data.name.name },
+        params: { userId: data.params.userId },
+        data: { name: data.data.value.name },
       });
     },
     getWallets(data: any) {

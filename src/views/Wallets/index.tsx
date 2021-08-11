@@ -6,6 +6,7 @@ import Loader from '../../components/Loader';
 import Wrapper from '../../components/Wrapper';
 import TableSpacedRows from '../../components/TableSpacedRows';
 import Button from '../../components/Button';
+import NewWallets from '../../containers/NewWallets';
 const Wallets = ({
   user,
   wallets,
@@ -14,7 +15,7 @@ const Wallets = ({
   getWallets,
   deleteWallet,
 }: any) => {
-  const [caca, setCaca] = useState([]);
+  const [walletModal, setWalletModal] = useState(false);
   const deleteButton = (walletId: number, userId: number) => {
     deleteWallet({ params: { userId: userId, walletId: walletId } });
   };
@@ -22,30 +23,33 @@ const Wallets = ({
     getWallets({ userId: user.id });
   }, []);
 
-  useEffect(() => {
-    setCaca(wallets);
-  }, []);
   return (
     <Wrapper>
       <Divider hidden />
       {loading && <Loader />}
       <Container>
         <Wrapper display='flex' justifyContent='space-between'>
-          <LinkButton
+          <Button
             labelPosition='right'
             icon='plus circle'
             content='Add new wallets'
-            path={`/wallets/new`}
+            onClick={() => {
+              setWalletModal(true);
+            }}
           />
         </Wrapper>
       </Container>
-
+      <NewWallets
+        open={walletModal}
+        handleClose={() => setWalletModal(false)}
+      />
       {
         <Container>
           <TableSpacedRows sortable>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Name</Table.HeaderCell>
+
                 <Table.HeaderCell>Assets</Table.HeaderCell>
                 <Table.HeaderCell />
               </Table.Row>

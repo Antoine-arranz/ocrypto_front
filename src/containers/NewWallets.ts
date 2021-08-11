@@ -9,13 +9,8 @@ const mapState = (state: any) => {
 };
 const dispatchState = (dispatch: any) => {
   return {
-    addNewWallet: (userId: number, value: any) => {
-      dispatch(
-        walletActions.addNewWallet({
-          params: { userId: userId },
-          data: { name: value },
-        })
-      );
+    addNewWallet: (data: any) => {
+      dispatch(walletActions.addNewWallet(data));
     },
   };
 };
