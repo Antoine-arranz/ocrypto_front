@@ -11,11 +11,12 @@ const walletRoutes = (api: any) => {
       });
     },
     getWallets(data: any) {
+      console.log('data', data);
       const walletApi = routesApi.routesApi.wallet.getAll;
       return api.api.request({
         method: walletApi.method,
         route: walletApi.path,
-        params: { userId: data.params.userId },
+        params: { userId: data.params.userId.params.userId },
         data: { data: data.params.data },
       });
     },

@@ -6,13 +6,21 @@ import Loader from '../../components/Loader';
 import Wrapper from '../../components/Wrapper';
 import TableSpacedRows from '../../components/TableSpacedRows';
 import Button from '../../components/Button';
-const Wallets = ({ user, history, getWallets, deleteWallet }: any) => {
+const Wallets = ({
+  user,
+  wallets,
+  loading,
+  history,
+  getWallets,
+  deleteWallet,
+}: any) => {
+  console.log('wallets', wallets);
   const deleteButton = (walletId: number) => {
     deleteWallet({ params: { walletId } });
   };
   useEffect(() => {
     getWallets({ params: { userId: user.id } });
-  }, []);
+  }, [wallets]);
   return (
     <Wrapper>
       <Divider hidden />
@@ -38,8 +46,8 @@ const Wallets = ({ user, history, getWallets, deleteWallet }: any) => {
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {user.wallets &&
-                user.wallets.map((wallet: any, i: any) => {
+              {wallets &&
+                wallets.map((wallet: any, i: any) => {
                   return (
                     <Table.Row key={i}>
                       <Table.Cell>{wallet.name}</Table.Cell>

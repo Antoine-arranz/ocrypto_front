@@ -37,7 +37,6 @@ const userReducer = (state: userState = initialState, action: any) => {
         isAuthenticated: true,
         loading: false,
       };
-      break;
     case actionsTypes.LOGIN_INPUT_SUBMIT_ERROR:
       return {
         ...state,
@@ -93,22 +92,6 @@ const userReducer = (state: userState = initialState, action: any) => {
       return {
         ...state,
         loading: false,
-      };
-    case actionsTypes.GETWALLETS_SUCESS:
-      return {
-        ...state,
-        loading: false,
-        wallets: [...action.payload.result],
-      };
-    case actionsTypes.GETWALLETS_LOADING:
-      return {
-        ...state,
-        loading: true,
-      };
-    case actionsTypes.GETWALLETS_ERROR:
-      return {
-        ...state,
-        loading: true,
       };
     default:
       return {

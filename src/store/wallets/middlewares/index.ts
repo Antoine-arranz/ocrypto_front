@@ -33,6 +33,18 @@ const walletMiddlewares = ({ api }: any) => {
           next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
         }
         break;
+      case walletActionsTypes.GETWALLETS:
+        try {
+          next({ type: walletActionsTypes.GETWALLETS_LOADING });
+          const response = await request.getWallets({ ...action.payload });
+          next({
+            type: walletActionsTypes.GETWALLETS_SUCESS,
+            payload: response.data,
+          });
+        } catch (error) {
+          next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
+        }
+        break;
       default:
         next(action);
         break;

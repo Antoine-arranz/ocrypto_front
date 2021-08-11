@@ -14,6 +14,12 @@ const walletActions = {
       payload,
     };
   },
+  getAllWallet(payload: any) {
+    return {
+      type: walletTypes.GETWALLETS,
+      payload,
+    };
+  },
 };
 
 export default walletActions;

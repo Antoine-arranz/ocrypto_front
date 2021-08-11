@@ -4,18 +4,18 @@ export interface walletState {
   wallet: [
     {
       name: string;
-      loading: boolean;
     }
   ];
+  loading: boolean;
 }
 
 const initialState = {
   wallet: [
     {
       name: '',
-      loading: false,
     },
   ],
+  loading: false,
 };
 const walletReducer = (state = initialState, action: any) => {
   switch (action.type) {
@@ -35,6 +35,22 @@ const walletReducer = (state = initialState, action: any) => {
         loading: false,
       };
     case walletActions.DELETE_WALLET_SUBMIT_SUCESS:
+      return {
+        ...state,
+        loading: true,
+      };
+    case walletActions.GETWALLETS_SUCESS:
+      return {
+        ...state,
+        loading: false,
+        wallet: [...action.payload.result],
+      };
+    case walletActions.GETWALLETS_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case walletActions.GETWALLETS_ERROR:
       return {
         ...state,
         loading: true,

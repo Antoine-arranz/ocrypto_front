@@ -32,12 +32,6 @@ const userActions = {
       payload: data,
     };
   },
-  getAllWallet(payload: any) {
-    return {
-      type: actionsTypes.GETWALLETS,
-      payload,
-    };
-  },
 };
 
 export default userActions;
