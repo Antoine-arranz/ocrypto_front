@@ -1,5 +1,16 @@
 import { UserLoginI, UserSignInI } from '../formSchema/user';
 
+export type UserI = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  isAuthenticated: boolean;
+  loading: boolean;
+  error: string;
+};
+
 export type ResetPasswordAction = {
   type: string;
   payload: {
@@ -25,5 +36,30 @@ export type ValidateUserAction = {
 
 export type ForgotPasswordAction = {
   type: string;
-  payload: string;
+  payload: { name: string };
+};
+
+export type UpdatePasswordPropsI = {
+  match: any;
+  history: Array<string>;
+  resetPassword: (token: string, value: string) => void;
+};
+
+export type SignInPropsI = {
+  user: UserI;
+  handleSubmitSignInForm: (data: UserSignInI) => any;
+  history: Array<string>;
+};
+
+export type LoginPropsI = {
+  handleLogin: (data: UserLoginI) => void;
+  user: UserI;
+  history: Array<string>;
+  validateUser: (token: string) => void;
+  match: any;
+};
+
+export type ForgottenPasswordPropsI = {
+  handleForgottenPassword: (data: { name: string }) => void;
+  history: Array<string>;
 };

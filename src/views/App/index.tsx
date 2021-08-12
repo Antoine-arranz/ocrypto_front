@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from '../../containers/Header';
 import Footer from '../Footer';
-import Wrapper from '../../components/Wrapper';
 import 'semantic-ui-css/semantic.min.css';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';

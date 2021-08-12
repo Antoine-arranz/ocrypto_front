@@ -5,8 +5,9 @@ import Spacer from '../../../components/Spacer';
 import Wrapper from '../../../components/Wrapper';
 import Button from '../../../components/Button';
 import { Modal } from 'semantic-ui-react';
+import { UpdateWallerPropsI } from '../../../interface/wallet/walletSchema';
 
-const UpdateWallet = ({
+const UpdateWallet: React.FC<UpdateWallerPropsI> = ({
   userId,
   open,
   handleClose,

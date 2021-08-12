@@ -6,10 +6,14 @@ import FormizSimpleInput from '../../components/Formiz';
 import Spacer from '../../components/Spacer';
 import TextCustom from '../../components/TextCustom';
 import { path } from '../../routes/user';
-import { useEffect } from 'react';
 import Segment from '../../components/Segment';
+import { UpdatePasswordPropsI } from '../../interface/user';
 
-const UpdatePassword: React.FC<any> = ({ match, history, resetPassword }) => {
+const UpdatePassword: React.FC<UpdatePasswordPropsI> = ({
+  match,
+  history,
+  resetPassword,
+}) => {
   const forgottenPasswordForm = useForm();
 
   const save = (values: any) => {

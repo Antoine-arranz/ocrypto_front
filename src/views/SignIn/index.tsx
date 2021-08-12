@@ -10,10 +10,15 @@ import Wrapper from '../../components/Wrapper';
 import Spacer from '../../components/Spacer';
 import { UserSignInI } from '../../interface/formSchema/user';
 import paths from '../../routes/user/paths';
-const SingIn: React.FC<any> = ({ user, handleSubmitSignInForm, history }) => {
+import { SignInPropsI } from '../../interface/user';
+const SingIn: React.FC<SignInPropsI> = ({
+  user,
+  handleSubmitSignInForm,
+  history,
+}) => {
   const signUpForm = useForm();
-  const save = async (payload: UserSignInI) => {
-    await handleSubmitSignInForm(payload);
+  const save = async (data: UserSignInI) => {
+    await handleSubmitSignInForm(data);
     history.push(paths.login);
   };
   return (

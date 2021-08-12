@@ -5,8 +5,14 @@ import Spacer from '../../../components/Spacer';
 import Wrapper from '../../../components/Wrapper';
 import Button from '../../../components/Button';
 import { Modal } from 'semantic-ui-react';
+import { NewWalletPropsI } from '../../../interface/wallet/walletSchema';
 
-const NewWallets = ({ addNewWallet, user, open, handleClose }: any) => {
+const NewWallets: React.FC<NewWalletPropsI> = ({
+  addNewWallet,
+  user,
+  open,
+  handleClose,
+}: any) => {
   const signUpForm = useForm();
   const save = (value: { name: string }) => {
     addNewWallet({ params: { userId: user.id }, data: { name: value.name } });

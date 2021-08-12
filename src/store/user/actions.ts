@@ -15,7 +15,7 @@ const userActions = {
       payload,
     };
   },
-  handleForgottenPassword(payload: string) {
+  handleForgottenPassword(payload: { name: string }) {
     return {
       type: actionsTypes.FORGOTPASSWORD_INPUT_SUBMIT,
       payload,

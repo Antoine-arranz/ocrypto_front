@@ -7,8 +7,10 @@ import FormizSimpleInput from '../../components/Formiz';
 import Wrapper from '../../components/Wrapper';
 import { ClickableText } from '../../components/ClickatableText/ClickableTextStyled';
 import Spacer from '../../components/Spacer';
+import { UserLoginI } from '../../interface/formSchema/user';
+import { LoginPropsI } from '../../interface/user';
 
-const Login: React.FC<any> = ({
+const Login: React.FC<LoginPropsI> = ({
   handleLogin,
   user,
   history,
@@ -27,7 +29,7 @@ const Login: React.FC<any> = ({
 
   const loading = user.loading;
   const loginForm = useForm();
-  const signIn = async (data: any) => {
+  const signIn = async (data: UserLoginI) => {
     handleLogin(data);
   };
   return (

@@ -8,8 +8,8 @@ import ForgottenPassword from '../views/ForgottenPassword';
 
 const disPatchState = (dispatch: Dispatch<ForgotPasswordAction>) => {
   return {
-    handleForgottenPassword: (value: string) => {
-      dispatch(userActions.handleForgottenPassword(value));
+    handleForgottenPassword: (data: { name: string }) => {
+      dispatch(userActions.handleForgottenPassword(data));
     },
   };
 };

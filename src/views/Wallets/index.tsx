@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react';
-
 import { Button as Btn, Container, Divider, Table } from 'semantic-ui-react';
-import LinkButton from '../../components/LinkButton';
 import Loader from '../../components/Loader';
 import Wrapper from '../../components/Wrapper';
 import TableSpacedRows from '../../components/TableSpacedRows';
 import Button from '../../components/Button';
 import NewWallets from '../../containers/NewWallets';
 import UpdateWallet from '../../containers/UpdateWallet';
-const Wallets = ({ user, wallets, loading, getWallets, deleteWallet }: any) => {
-  const [walletModal, setWalletModal] = useState(false);
-  const [updateWalletModal, setUpdateWalletModal] = useState(false);
-  const [walletUpdatedId, setWalletUpdatedId] = useState(null);
-  const [walletUpdatedName, setWalletUpdatedName] = useState(null);
+import { WalletPropsI } from '../../interface/wallet/walletSchema';
+
+const Wallets: React.FC<WalletPropsI> = ({
+  user,
+  wallets,
+  loading,
+  getWallets,
+  deleteWallet,
+}) => {
+  const [walletModal, setWalletModal] = useState<boolean>(false);
+  const [updateWalletModal, setUpdateWalletModal] = useState<boolean>(false);
+  const [walletUpdatedId, setWalletUpdatedId] = useState<number | null>(null);
+  const [walletUpdatedName, setWalletUpdatedName] = useState<string | null>(
+    null
+  );
+  const [innerWidth, setInnerWidth] = useState<number | null>(null);
 
   const deleteButton = (walletId: number, userId: number) => {
     deleteWallet({ params: { userId: userId, walletId: walletId } });
@@ -21,6 +30,10 @@ const Wallets = ({ user, wallets, loading, getWallets, deleteWallet }: any) => {
     getWallets({ userId: user.id });
   }, []);
 
+  useEffect(() => {
+    setInnerWidth(window.innerWidth);
+    window.addEventListener('resize', () => setInnerWidth(window.innerWidth));
+  }, []);
   return (
     <Wrapper width='40%'>
       <Divider hidden />
@@ -53,9 +66,9 @@ const Wallets = ({ user, wallets, loading, getWallets, deleteWallet }: any) => {
           <TableSpacedRows sortable>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Name</Table.HeaderCell>
-
-                <Table.HeaderCell>Assets</Table.HeaderCell>
+                <Table.HeaderCell>
+                  {innerWidth && innerWidth > 767 && 'Name'}
+                </Table.HeaderCell>
                 <Table.HeaderCell />
               </Table.Row>
             </Table.Header>
@@ -64,7 +77,6 @@ const Wallets = ({ user, wallets, loading, getWallets, deleteWallet }: any) => {
                 wallets.map((wallet: any, i: any) => {
                   return (
                     <Table.Row key={i}>
-                      <Table.Cell>{wallet.name}</Table.Cell>
                       <Table.Cell>{wallet.name}</Table.Cell>
                       <Table.Cell textAlign='right'>
                         <Btn.Group widths='one'>

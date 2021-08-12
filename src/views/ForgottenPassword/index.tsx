@@ -7,8 +7,9 @@ import Wrapper from '../../components/Wrapper';
 import Spacer from '../../components/Spacer';
 import FormizSimpleInput from '../../components/Formiz';
 import { path } from '../../routes/user';
+import { ForgottenPasswordPropsI } from '../../interface/user';
 
-const ForgottenPassword: React.FC<any> = ({
+const ForgottenPassword: React.FC<ForgottenPasswordPropsI> = ({
   handleForgottenPassword,
   history,
 }) => {
