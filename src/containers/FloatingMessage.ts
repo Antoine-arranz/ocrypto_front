@@ -2,15 +2,18 @@ import { connect } from 'react-redux';
 import FloatingMessage from '../components/FloatingMessage';
 import selectors from '../store/selectors';
 import { messageActions } from '../store/messages';
-const mapState = (state: string) => {
+import { RootState } from '..';
+import { resetMessageAction } from '../interface/messages';
+import { Dispatch } from 'react';
+const mapState = (state: RootState) => {
   return {
     message: selectors.messageSelectors.message(state),
   };
 };
 
-const dispatchState = (dispatch: any) => {
+const dispatchState = (dispatch: Dispatch<resetMessageAction>) => {
   return {
-    resetMessage: (value: any) => {
+    resetMessage: () => {
       dispatch(messageActions.resetMessage());
     },
   };

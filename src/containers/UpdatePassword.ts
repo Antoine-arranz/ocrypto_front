@@ -1,18 +1,15 @@
 import { connect } from 'react-redux';
 import UpdatePassword from '../views/UpdatePassword';
-import selectors from '../store/selectors';
-import { userActions, userActionTypes } from '../store/user';
+import { userActions } from '../store/user/';
+import { ResetPasswordAction } from '../interface/user';
+import { Dispatch } from 'react';
 
-const mapState = (state: any) => {
-  return {};
-};
-
-const dispatchState = (dispatch: any) => {
+const dispatchState = (dispatch: Dispatch<ResetPasswordAction>) => {
   return {
-    resetPassword: (token: any, password: any) => {
-      dispatch(userActions.resetPassword({ params: { token, password } }));
+    resetPassword: (token: string, password: string) => {
+      dispatch(userActions.resetPassword({ token, password }));
     },
   };
 };
 
-export default connect(mapState, dispatchState)(UpdatePassword);
+export default connect(null, dispatchState)(UpdatePassword);

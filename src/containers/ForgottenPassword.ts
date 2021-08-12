@@ -1,16 +1,16 @@
-import { connect } from "react-redux";
-import { userActions } from "../store/user";
+import { Dispatch } from 'react';
+import { connect } from 'react-redux';
+import { RootState } from '..';
+import { ForgotPasswordAction } from '../interface/user';
+import { userActions } from '../store/user';
 
-import ForgottenPassword from "../views/ForgottenPassword";
-const mapState = (state: any) => {
-  return {};
-};
+import ForgottenPassword from '../views/ForgottenPassword';
 
-const disPatchState = (dispatch: any) => {
+const disPatchState = (dispatch: Dispatch<ForgotPasswordAction>) => {
   return {
-    handleForgottenPassword: (value: any) => {
+    handleForgottenPassword: (value: string) => {
       dispatch(userActions.handleForgottenPassword(value));
     },
   };
 };
-export default connect(mapState, disPatchState)(ForgottenPassword);
+export default connect(null, disPatchState)(ForgottenPassword);

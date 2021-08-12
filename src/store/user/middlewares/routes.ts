@@ -31,7 +31,7 @@ const userRoutes = (api: any) => {
       return api.api.request({
         method: loginApi.method,
         route: loginApi.path,
-        params: data.params,
+        params: { token: data },
       });
     },
     updatePassword(data: any) {

@@ -8,17 +8,7 @@ import TableSpacedRows from '../../components/TableSpacedRows';
 import Button from '../../components/Button';
 import NewWallets from '../../containers/NewWallets';
 import UpdateWallet from '../../containers/UpdateWallet';
-import { walletReducer } from '../../store/wallets';
-import { Formiz, useForm } from '@formiz/core';
-import FormizSimpleInput from '../../components/Formiz';
-const Wallets = ({
-  user,
-  wallets,
-  loading,
-  history,
-  getWallets,
-  deleteWallet,
-}: any) => {
+const Wallets = ({ user, wallets, loading, getWallets, deleteWallet }: any) => {
   const [walletModal, setWalletModal] = useState(false);
   const [updateWalletModal, setUpdateWalletModal] = useState(false);
   const [walletUpdatedId, setWalletUpdatedId] = useState(null);
@@ -32,7 +22,7 @@ const Wallets = ({
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper width='40%'>
       <Divider hidden />
       {loading && <Loader />}
       <Container>
@@ -58,7 +48,6 @@ const Wallets = ({
         walletName={walletUpdatedName}
         userId={user.id}
       />
-      ;
       {
         <Container>
           <TableSpacedRows sortable>
@@ -78,7 +67,7 @@ const Wallets = ({
                       <Table.Cell>{wallet.name}</Table.Cell>
                       <Table.Cell>{wallet.name}</Table.Cell>
                       <Table.Cell textAlign='right'>
-                        <Btn.Group horizontal widths='one'>
+                        <Btn.Group widths='one'>
                           <Button
                             content='Update'
                             icon='edit outline'

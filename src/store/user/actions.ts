@@ -1,4 +1,5 @@
 import { UserLoginI, UserSignInI } from '../../interface/formSchema/user';
+import { ResetPasswordAction } from '../../interface/user/';
 import actionsTypes from './actionTypes';
 
 const userActions = {
@@ -20,13 +21,16 @@ const userActions = {
       payload,
     };
   },
-  validateUser(data: any) {
+  validateUser(data: string) {
     return {
       type: actionsTypes.VALIDATEUSER_SUBMIT,
       payload: data,
     };
   },
-  resetPassword(data: any) {
+  resetPassword(data: {
+    token: string;
+    password: string;
+  }): ResetPasswordAction {
     return {
       type: actionsTypes.RESET_PASSWORD_INPUT_SUBMIT,
       payload: data,

@@ -1,8 +1,14 @@
+import { Dispatch } from 'react';
 import { connect } from 'react-redux';
+import { RootState } from '..';
 import selectors from '../store/selectors';
 import { walletActions } from '../store/wallets';
 import Wallets from '../views/Wallets';
-const mapState = (state: any) => {
+import {
+  GetAllWalletAction,
+  DeleteWalletAction,
+} from '../interface/wallet/walletSchema';
+const mapState = (state: RootState) => {
   return {
     wallets: selectors.walletSelectors.wallets(state),
     user: selectors.userSelectors.user(state),
@@ -10,13 +16,15 @@ const mapState = (state: any) => {
   };
 };
 
-const dispatchState = (dispatch: any) => {
+const dispatchState = (
+  dispatch: Dispatch<GetAllWalletAction | DeleteWalletAction>
+) => {
   return {
-    getWallets: (userId: number) => {
-      dispatch(walletActions.getAllWallet(userId));
+    getWallets: (data: { userId: number }) => {
+      dispatch(walletActions.getAllWallet(data));
     },
-    deleteWallet: (data: any) => {
-      dispatch(walletActions.deleteWallet({ params: { data } }));
+    deleteWallet: (data: { params: { userId: number; walletId: number } }) => {
+      dispatch(walletActions.deleteWallet(data));
     },
   };
 };

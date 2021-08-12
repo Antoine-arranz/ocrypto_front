@@ -2,14 +2,20 @@ import { connect } from 'react-redux';
 import UpdateWallet from '../views/Wallets/UpdateWallet';
 import selectors from '../store/selectors';
 import { walletActions } from '../store/wallets';
-const mapState = (state: any) => {
+import { Dispatch } from 'react';
+import { UpdateWalletAction } from '../interface/wallet/walletSchema';
+import { RootState } from '..';
+const mapState = (state: RootState) => {
   return {
     user: selectors.userSelectors.user(state),
   };
 };
-const dispatchState = (dispatch: any) => {
+const dispatchState = (dispatch: Dispatch<UpdateWalletAction>) => {
   return {
-    updateWallet: (data: any) => {
+    updateWallet: (data: {
+      params: { userId: number; walleId: number };
+      value: { name: string };
+    }) => {
       dispatch(walletActions.updateWallet(data));
     },
   };

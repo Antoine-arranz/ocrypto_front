@@ -2,21 +2,27 @@ import { connect } from 'react-redux';
 import Login from '../views/Login';
 import { userActions } from '../store/user';
 import selectors from '../store/selectors';
+import { RootState } from '..';
+import { UserLoginI } from '../interface/formSchema/user';
+import { LoginAction, ValidateUserAction } from '../interface/user';
+import { Dispatch } from 'react';
 
-const mapState = (state: any) => {
+const mapState = (state: RootState) => {
   return {
     user: selectors.userSelectors.user(state),
     // isAuthenticated: selectors.userSelectors.isAuthenticated(state),
   };
 };
 
-const disPatchState = (dispatch: any) => {
+const disPatchState = (
+  dispatch: Dispatch<LoginAction | ValidateUserAction>
+) => {
   return {
-    handleLogin: (value: any) => {
+    handleLogin: (value: UserLoginI) => {
       dispatch(userActions.loginInputSubmit(value));
     },
-    validateUser: (value: any) => {
-      dispatch(userActions.validateUser({ params: { token: value } }));
+    validateUser: (token: string) => {
+      dispatch(userActions.validateUser(token));
     },
   };
 };

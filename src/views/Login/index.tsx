@@ -7,7 +7,6 @@ import FormizSimpleInput from '../../components/Formiz';
 import Wrapper from '../../components/Wrapper';
 import { ClickableText } from '../../components/ClickatableText/ClickableTextStyled';
 import Spacer from '../../components/Spacer';
-import { path } from '../../routes/user';
 
 const Login: React.FC<any> = ({
   handleLogin,

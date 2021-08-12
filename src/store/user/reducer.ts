@@ -1,4 +1,4 @@
-import { WalletI } from '../../interface/wallet';
+import { WalletI } from '../../interface/wallet/walletSchema';
 import actionsTypes from './actionTypes';
 
 export interface userState {

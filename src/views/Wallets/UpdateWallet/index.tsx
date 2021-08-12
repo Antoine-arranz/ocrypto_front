@@ -23,7 +23,11 @@ const UpdateWallet = ({
     <Modal open={open} onClose={handleClose}>
       <Modal.Content>
         <Wrapper>
-          <Formiz connect={signUpForm} onValidSubmit={update}>
+          <Formiz
+            connect={signUpForm}
+            onValidSubmit={update}
+            initialValues={{ name: walletName }}
+          >
             <form onSubmit={signUpForm.submit} noValidate>
               <FormizSimpleInput
                 type='name'

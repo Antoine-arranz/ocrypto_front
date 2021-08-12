@@ -14,7 +14,7 @@ const ForgottenPassword: React.FC<any> = ({
 }) => {
   const forgottenPasswordForm = useForm();
 
-  const submit = async (data: any) => {
+  const submit = async (data: { name: string }) => {
     handleForgottenPassword(data);
     history.push(path.login);
   };

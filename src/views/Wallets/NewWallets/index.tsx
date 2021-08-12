@@ -8,8 +8,8 @@ import { Modal } from 'semantic-ui-react';
 
 const NewWallets = ({ addNewWallet, user, open, handleClose }: any) => {
   const signUpForm = useForm();
-  const save = (value: any) => {
-    addNewWallet({ params: { userId: user.id }, data: { value } });
+  const save = (value: { name: string }) => {
+    addNewWallet({ params: { userId: user.id }, data: { name: value.name } });
     handleClose();
   };
   return (

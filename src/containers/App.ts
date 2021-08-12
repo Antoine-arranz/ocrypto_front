@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import App from '../views/App';
 import selectors from '../store/selectors';
-const mapState = (state: any) => {
+import { RootState } from '..';
+const mapState = (state: RootState) => {
   return {
     isAuthenticated: selectors.appSelectors(state),
     message: selectors.messageSelectors.message(state),

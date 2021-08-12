@@ -7,7 +7,7 @@ const walletRoutes = (api: any) => {
         method: walletApi.method,
         route: walletApi.path,
         params: { userId: data.params.userId },
-        data: { name: data.data.value.name },
+        data: { name: data.data.name },
       });
     },
     getWallets(data: any) {
@@ -23,7 +23,7 @@ const walletRoutes = (api: any) => {
       return api.api.request({
         method: walletApi.method,
         route: walletApi.path,
-        params: { walletId: data.params.data.params.walletId },
+        params: { walletId: data.params.walletId },
       });
     },
     updateWallet(data: any) {

@@ -2,14 +2,11 @@ import walletActionsTypes from '../actionTypes';
 import routes from './routes';
 import { messageActionTypes } from '../../messages';
 import walletActions from '../actions';
-import userActions from '../../../store/user/actionTypes';
-import {} from '../../../';
-import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
+import { Action, Dispatch } from '../../../interface/middlewares';
 
 const walletMiddlewares = ({ api }: any) => {
   const request = routes({ api });
-  return (store: any) => (next: any) => async (action: any) => {
-    const state = store.getState();
+  return (store: any) => (next: Dispatch<Action>) => async (action: any) => {
     const { dispatch } = store;
 
     switch (action.type) {
@@ -33,7 +30,7 @@ const walletMiddlewares = ({ api }: any) => {
           next({ type: walletActionsTypes.DELETE_WALLET_SUBMIT_SUCESS });
           dispatch(
             walletActions.getAllWallet({
-              userId: action.payload.params.data.params.userId,
+              userId: action.payload.params.userId,
             })
           );
         } catch (error) {

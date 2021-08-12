@@ -1,7 +1,8 @@
-import { connect } from "react-redux";
-import Header from "../views/Header";
-import { appSelectors } from "../store/app";
-const mapState = (state: any) => {
+import { connect } from 'react-redux';
+import Header from '../views/Header';
+import { appSelectors } from '../store/app';
+import { RootState } from '..';
+const mapState = (state: RootState) => {
   return {
     isAuthenticated: appSelectors(state),
   };

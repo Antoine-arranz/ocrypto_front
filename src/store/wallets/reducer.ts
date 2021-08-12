@@ -1,22 +1,18 @@
 import walletActions from './actionTypes';
+import { WalletState } from '../../interface/wallet/walletSchema';
 
-export interface walletState {
-  wallet: [
-    {
-      name: string;
-    }
-  ];
-  loading: boolean;
-}
-
-const initialState: walletState = {
+const initialState: WalletState = {
   wallet: [
     {
       name: '',
+      User_Id: null,
+      createdAt: null,
+      updatedAt: null,
     },
   ],
   loading: false,
 };
+
 const walletReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case walletActions.ADD_NEW_WALLET_SUBMIT_LOADING:
@@ -30,12 +26,22 @@ const walletReducer = (state = initialState, action: any) => {
         loading: false,
         wallet: [...state.wallet, action.payload],
       };
+    case walletActions.ADD_NEW_WALLET_SUBMIT_ERROR:
+      return {
+        ...state,
+        loading: false,
+      };
     case walletActions.DELETE_WALLET_SUBMIT_LOADING:
       return {
         ...state,
         loading: true,
       };
     case walletActions.DELETE_WALLET_SUBMIT_SUCESS:
+      return {
+        ...state,
+        loading: false,
+      };
+    case walletActions.DELETE_WALLET_SUBMIT_ERROR:
       return {
         ...state,
         loading: false,

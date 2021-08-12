@@ -4,7 +4,7 @@ import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 import './styles/_reset.scss';
 import { Provider } from 'react-redux';
-
+import './theme/styles.css';
 import configureStore from './store';
 
 import services from './services';
@@ -13,6 +13,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 const servicesContainer = services(config);
 const { store, persistor } = configureStore({}, servicesContainer);
+export type RootState = ReturnType<typeof store.getState>;
 
 ReactDOM.render(
   <React.StrictMode>
