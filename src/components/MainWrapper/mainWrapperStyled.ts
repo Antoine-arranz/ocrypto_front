@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import background from '../../assets/bg2.jpg';
 export const MainWrapper = styled.div((props: any) => {
   return {
     height: '100vh',
