@@ -9,6 +9,7 @@ export type UserI = {
   isAuthenticated: boolean;
   loading: boolean;
   error: string;
+  walletSelected: number | null;
 };
 
 export type ResetPasswordAction = {
@@ -57,9 +58,20 @@ export type LoginPropsI = {
   history: Array<string>;
   validateUser: (token: string) => void;
   match: any;
+  getWallets: (data: { userId: number }) => void;
 };
 
 export type ForgottenPasswordPropsI = {
   handleForgottenPassword: (data: { name: string }) => void;
   history: Array<string>;
+};
+
+export type ChangeSelectedWalletAction = {
+  type: string;
+  payload: { walletId: number };
+};
+
+export type GetWalletsAction = {
+  type: string;
+  payload: { userId: number };
 };

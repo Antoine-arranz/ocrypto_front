@@ -9,7 +9,7 @@ export interface userState {
   isAuthenticated: boolean;
   loading: boolean;
   error: string;
-  wallets: Array<WalletI>;
+  walletSelected: number | null;
 }
 
 const initialState: userState = {
@@ -20,7 +20,7 @@ const initialState: userState = {
   isAuthenticated: false,
   loading: false,
   error: '',
-  wallets: [],
+  walletSelected: null,
 };
 
 const userReducer = (state: userState = initialState, action: any) => {
@@ -92,6 +92,23 @@ const userReducer = (state: userState = initialState, action: any) => {
       return {
         ...state,
         loading: false,
+      };
+    case actionsTypes.CHANGE_WALLET_SELECTED_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case actionsTypes.CHANGE_WALLET_SELECTED_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        walletSelected: action.payload,
+      };
+    case actionsTypes.CHANGE_WALLET_SELECTED_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
       };
     default:
       return {

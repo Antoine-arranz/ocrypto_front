@@ -1,8 +1,8 @@
-import Dashboard from "../../views/Dashboard";
+import Dashboard from '../../containers/Dashboard';
 
 const dashboardRoutes = [
   {
-    path: "/",
+    path: '/',
     component: Dashboard,
   },
 ];

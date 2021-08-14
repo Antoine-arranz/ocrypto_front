@@ -42,6 +42,18 @@ export const routesApi = {
       path: '/wallet/:walletId',
     },
   },
+  platform: {
+    getAll: {
+      method: 'GET',
+      path: '/platform',
+    },
+  },
+  currency: {
+    getAll: {
+      method: 'GET',
+      path: '/currency',
+    },
+  },
 };
 
 export default routesApi;

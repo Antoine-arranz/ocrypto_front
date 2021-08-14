@@ -1,5 +1,8 @@
 import { UserLoginI, UserSignInI } from '../../interface/formSchema/user';
-import { ResetPasswordAction } from '../../interface/user/';
+import {
+  ChangeSelectedWalletAction,
+  ResetPasswordAction,
+} from '../../interface/user/';
 import actionsTypes from './actionTypes';
 
 const userActions = {
@@ -33,6 +36,12 @@ const userActions = {
   }): ResetPasswordAction {
     return {
       type: actionsTypes.RESET_PASSWORD_INPUT_SUBMIT,
+      payload: data,
+    };
+  },
+  changeSelectedWallet(data: { walletId: number }): ChangeSelectedWalletAction {
+    return {
+      type: actionsTypes.CHANGE_WALLET_SELECTED,
       payload: data,
     };
   },

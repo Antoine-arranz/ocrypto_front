@@ -1,8 +1,11 @@
 import React from 'react';
 import Wrapper from '../../components/Wrapper';
-import { Header as SemanticHeader, Dropdown, Menu } from 'semantic-ui-react';
+import { Dropdown, Menu } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
-const Header = ({ isAuthenticated, history }: any) => {
+const Header = ({ isAuthenticated, changeSelectedWallet, wallets }: any) => {
   return (
     <Wrapper backgroundColor='#5cba99'>
       <Menu secondary horizontal='true'>
@@ -13,16 +16,26 @@ const Header = ({ isAuthenticated, history }: any) => {
           name='home'
           className='whitecolor'
           onClick={() => {
-            history.push('/login');
+            <Redirect to='/' />;
           }}
         />
         {isAuthenticated && (
           <Menu.Item name='add events' className='whitecolor' />
         )}
         {isAuthenticated && (
-          <Dropdown item text='Wallets' className='whitecolor'>
-            <Dropdown.Menu></Dropdown.Menu>
-          </Dropdown>
+          <Dropdown
+            item
+            placeholder='Wallets'
+            className='whitecolor'
+            options={wallets.map((e: any, i: number) => ({
+              key: i,
+              text: e.name,
+              value: e.id,
+            }))}
+            onChange={(event, { value }) => {
+              changeSelectedWallet({ walletId: value });
+            }}
+          />
         )}
         {isAuthenticated ? (
           <Menu.Item
@@ -38,7 +51,7 @@ const Header = ({ isAuthenticated, history }: any) => {
             active
             position='right'
             onClick={() => {
-              history.push('/signIn');
+              <Redirect to='/signIn' />;
             }}
           />
         )}

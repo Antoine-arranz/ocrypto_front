@@ -16,6 +16,7 @@ const Login: React.FC<LoginPropsI> = ({
   history,
   validateUser,
   match,
+  getWallets,
 }) => {
   useEffect(() => {
     if (match.params.token) {
@@ -23,7 +24,8 @@ const Login: React.FC<LoginPropsI> = ({
       history.push('/login');
     }
     if (user.isAuthenticated) {
-      history.push('/wallets');
+      getWallets({ userId: user.id });
+      history.push('/');
     }
   }, [user]);
 

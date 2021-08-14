@@ -112,6 +112,17 @@ const userMiddlewares = ({ api }: any) => {
           next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
         }
         break;
+      case userActionTypes.CHANGE_WALLET_SELECTED:
+        try {
+          next({ type: userActionTypes.CHANGE_WALLET_SELECTED_LOADING });
+          next({
+            type: userActionTypes.CHANGE_WALLET_SELECTED_SUCCESS,
+            payload: action.payload.walletId,
+          });
+        } catch (error) {
+          next({ type: userActionTypes.CHANGE_WALLET_SELECTED_ERROR });
+        }
+        break;
       default:
         next(action);
         break;

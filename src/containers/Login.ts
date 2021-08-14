@@ -4,8 +4,13 @@ import { userActions } from '../store/user';
 import selectors from '../store/selectors';
 import { RootState } from '..';
 import { UserLoginI } from '../interface/formSchema/user';
-import { LoginAction, ValidateUserAction } from '../interface/user';
+import {
+  GetWalletsAction,
+  LoginAction,
+  ValidateUserAction,
+} from '../interface/user';
 import { Dispatch } from 'react';
+import { walletActions } from '../store/wallets';
 
 const mapState = (state: RootState) => {
   return {
@@ -15,7 +20,7 @@ const mapState = (state: RootState) => {
 };
 
 const disPatchState = (
-  dispatch: Dispatch<LoginAction | ValidateUserAction>
+  dispatch: Dispatch<LoginAction | ValidateUserAction | GetWalletsAction>
 ) => {
   return {
     handleLogin: (value: UserLoginI) => {
@@ -23,6 +28,9 @@ const disPatchState = (
     },
     validateUser: (token: string) => {
       dispatch(userActions.validateUser(token));
+    },
+    getWallets: (data: { userId: number }) => {
+      dispatch(walletActions.getAllWallet(data));
     },
   };
 };
