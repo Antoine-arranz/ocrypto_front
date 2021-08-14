@@ -4,7 +4,7 @@ import FormizSimpleInput from '../../../../components/Formiz';
 import Spacer from '../../../../components/Spacer';
 import Wrapper from '../../../../components/Wrapper';
 import Button from '../../../../components/Button';
-import { Dropdown, Grid, Modal } from 'semantic-ui-react';
+import { Grid, Modal } from 'semantic-ui-react';
 import FormizDropdownInput from '../../../../components/Formiz/FormizDropdownInput';
 
 const AddEvent: React.FC<any> = ({
@@ -38,61 +38,43 @@ const AddEvent: React.FC<any> = ({
         <Wrapper>
           <Formiz connect={eventForm} onValidSubmit={save}>
             <form onSubmit={eventForm.submit}>
-              <Wrapper textAlign='left'>
-                <FormizDropdownInput
-                  name='type'
-                  label='Choose a type'
-                  required
-                  placeholder='type'
-                  options={[
-                    {
-                      key: 1,
-                      value: 'buy',
-                      text: 'Buy',
-                    },
-                    {
-                      key: 2,
-                      value: 'sell',
-                      text: 'Sell',
-                    },
-                  ]}
-                  onChange={(value: any) => {
-                    setType(value);
-                  }}
-                />
-              </Wrapper>
+              <FormizDropdownInput
+                name='type'
+                label='Choose a type'
+                required
+                placeholder='type'
+                options={[
+                  {
+                    key: 1,
+                    value: 'buy',
+                    text: 'Buy',
+                  },
+                  {
+                    key: 2,
+                    value: 'sell',
+                    text: 'Sell',
+                  },
+                ]}
+                onChange={(value: any) => {
+                  setType(value);
+                }}
+              />
+              <Spacer height='20px' />
               {type && (
                 <Grid>
-                  <Grid.Row columns='3'>
+                  <Grid.Row columns='2'>
                     <Grid.Column>
                       <FormizDropdownInput
-                        name='type'
+                        name='bought'
                         label='Asset bought'
                         search
                         required
-                        placeholder='type'
+                        placeholder='Asset'
                         options={currencies.currencies.map((currency: any) => {
                           return {
                             key: currency.id,
                             text: currency.name,
-                            value: currency.name,
-                            image: { src: currency.slug },
-                          };
-                        })}
-                      />
-                    </Grid.Column>
-                    <Grid.Column>
-                      <FormizDropdownInput
-                        name='type'
-                        label='Asset sell'
-                        search
-                        required
-                        placeholder='type'
-                        options={currencies.currencies.map((currency: any) => {
-                          return {
-                            key: currency.id,
-                            text: currency.name,
-                            value: currency.name,
+                            value: currency.id,
                             image: { src: currency.slug },
                           };
                         })}
@@ -101,36 +83,86 @@ const AddEvent: React.FC<any> = ({
                     <Grid.Column>
                       <FormizSimpleInput
                         type='number'
-                        name='quantity'
-                        label='Quantity'
+                        name='quantityBought'
+                        label='Quantity Bought'
                         placeholder='Quantity'
-                        required='Quantity is required'
+                        required='Quantity Bought is required'
                       />
                     </Grid.Column>
+                  </Grid.Row>
+                  <Grid.Row columns='2'>
+                    <Grid.Column>
+                      <FormizDropdownInput
+                        name='sell'
+                        label='Asset sell'
+                        search
+                        required
+                        placeholder='Asset'
+                        options={currencies.currencies.map((currency: any) => {
+                          return {
+                            key: currency.id,
+                            text: currency.name,
+                            value: currency.id,
+                            image: { src: currency.slug },
+                          };
+                        })}
+                      />
+                    </Grid.Column>
+                    <Grid.Column>
+                      <FormizSimpleInput
+                        type='number'
+                        name='quantitySell'
+                        label='Quantity Sell'
+                        placeholder='Quantity'
+                        required='Quantity Sell is required'
+                      />
+                    </Grid.Column>
+                  </Grid.Row>
+                  <Grid.Row columns='2'>
                     <Grid.Column>
                       <FormizSimpleInput
                         type='number'
                         name='amount'
-                        label='Amount'
-                        placeholder='Amount'
-                        required='Amount is required'
+                        label='Amount Bought'
+                        placeholder='Amount Bought'
+                        required='Amount Bought is required'
                       />
                     </Grid.Column>
                     <Grid.Column>
+                      <FormizSimpleInput
+                        type='number'
+                        name='amount sell'
+                        label='Amount Sell'
+                        placeholder='Amount Sell'
+                        required='Amount Sell is required'
+                      />
+                    </Grid.Column>
+                  </Grid.Row>
+                  <Grid.Row columns='2'>
+                    <Grid.Column>
                       <FormizDropdownInput
-                        name='type'
+                        name='exhange'
                         label='Choose a exhange'
                         search
                         required
-                        placeholder='type'
+                        placeholder='exhange'
                         options={platforms.platforms.map((platform: any) => {
                           return {
                             key: platform.id,
                             text: platform.name,
-                            value: platform.name,
+                            value: platform.id,
                             image: { src: platform.slug },
                           };
                         })}
+                      />
+                    </Grid.Column>
+                    <Grid.Column>
+                      <FormizSimpleInput
+                        type='date'
+                        name='date'
+                        label='Date'
+                        placeholder='Date'
+                        required='Date is required'
                       />
                     </Grid.Column>
                   </Grid.Row>

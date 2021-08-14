@@ -20,17 +20,14 @@ const Header = ({ isAuthenticated, changeSelectedWallet, wallets }: any) => {
           }}
         />
         {isAuthenticated && (
-          <Menu.Item name='add events' className='whitecolor' />
-        )}
-        {isAuthenticated && (
           <Dropdown
             item
             placeholder='Wallets'
             className='whitecolor'
-            options={wallets.map((e: any, i: number) => ({
+            options={wallets.map((wallet: any, i: number) => ({
               key: i,
-              text: e.name,
-              value: e.id,
+              text: wallet.name,
+              value: wallet.id,
             }))}
             onChange={(event, { value }) => {
               changeSelectedWallet({ walletId: value });

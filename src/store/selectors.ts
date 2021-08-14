@@ -4,6 +4,7 @@ import messageSelectors from './messages/selectors';
 import walletSelectors from './wallets/selectors';
 import platformSelectors from './platform/selectors';
 import currencySelectors from './currency/selectors';
+import eventSelectors from './event/selectors';
 
 export default {
   userSelectors,
@@ -12,4 +13,5 @@ export default {
   walletSelectors,
   platformSelectors,
   currencySelectors,
+  eventSelectors,
 };

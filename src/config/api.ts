@@ -54,6 +54,16 @@ export const routesApi = {
       path: '/currency',
     },
   },
+  event: {
+    getAll: {
+      method: 'GET',
+      path: '/:walletId',
+    },
+    add: {
+      method: 'POST',
+      path: '/:walletId/add',
+    },
+  },
 };
 
 export default routesApi;
