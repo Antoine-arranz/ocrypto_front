@@ -18,7 +18,6 @@ const App: React.FC<any> = ({ isAuthenticated, message }) => {
       <Header history={history} />
       <MainWrapper>
         {message.message && <FloatingMessage message={message} />}
-        <Spacer height='100px' />
         {loginRoutes.map((route) => {
           return <Route component={route.component} path={route.path} exact />;
         })}

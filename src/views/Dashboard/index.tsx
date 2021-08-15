@@ -28,6 +28,7 @@ const Dashboard = ({
       justifyContent='space-between'
       flexDirection='column'
     >
+      <Spacer height='50px' />
       <Wrapper>
         {user.walletSelected && (
           <Button
@@ -50,6 +51,7 @@ const Dashboard = ({
 
       <Chart />
       <Assets />
+      <Spacer height='40px' />
       <Events />
       <Spacer height='60px' />
     </Wrapper>

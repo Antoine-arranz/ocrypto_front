@@ -33,6 +33,12 @@ const Wallets: React.FC<WalletPropsI> = ({
   useEffect(() => {
     setInnerWidth(window.innerWidth);
     window.addEventListener('resize', () => setInnerWidth(window.innerWidth));
+
+    return () => {
+      window.removeEventListener('resize', () =>
+        setInnerWidth(window.innerWidth)
+      );
+    };
   }, []);
   return (
     <Wrapper width='40%'>
