@@ -10,15 +10,17 @@ import FormizDropdownInput from '../../../../components/Formiz/FormizDropdownInp
 const AddEvent: React.FC<any> = ({
   open,
   handleClose,
-  walletId,
+  currentWalletId,
   getPlatforms,
   platforms,
   getCurrencies,
   currencies,
+  addEvent,
 }) => {
   const [type, setType] = useState<any>('');
   const eventForm = useForm();
   const save = (value: any) => {
+    addEvent({ params: currentWalletId, data: value });
     setType('');
     handleClose();
   };
@@ -65,8 +67,8 @@ const AddEvent: React.FC<any> = ({
                   <Grid.Row columns='2'>
                     <Grid.Column>
                       <FormizDropdownInput
-                        name='bought'
-                        label='Asset bought'
+                        name='currencyBougth'
+                        label='currencyBougth'
                         search
                         required
                         placeholder='Asset'
@@ -93,8 +95,8 @@ const AddEvent: React.FC<any> = ({
                   <Grid.Row columns='2'>
                     <Grid.Column>
                       <FormizDropdownInput
-                        name='sell'
-                        label='Asset sell'
+                        name='currencySell'
+                        label='Currency Sell'
                         search
                         required
                         placeholder='Asset'
@@ -122,7 +124,7 @@ const AddEvent: React.FC<any> = ({
                     <Grid.Column>
                       <FormizSimpleInput
                         type='number'
-                        name='amount'
+                        name='amountBought'
                         label='Amount Bought'
                         placeholder='Amount Bought'
                         required='Amount Bought is required'
@@ -131,7 +133,7 @@ const AddEvent: React.FC<any> = ({
                     <Grid.Column>
                       <FormizSimpleInput
                         type='number'
-                        name='amount sell'
+                        name='amountSell'
                         label='Amount Sell'
                         placeholder='Amount Sell'
                         required='Amount Sell is required'
@@ -140,8 +142,28 @@ const AddEvent: React.FC<any> = ({
                   </Grid.Row>
                   <Grid.Row columns='2'>
                     <Grid.Column>
+                      <FormizSimpleInput
+                        type='number'
+                        name='fees'
+                        label='Fees'
+                        placeholder='Fees'
+                      />
+                    </Grid.Column>
+
+                    <Grid.Column>
+                      <FormizSimpleInput
+                        type='date'
+                        name='date'
+                        label='Date'
+                        placeholder='Date'
+                        required='Date is required'
+                      />
+                    </Grid.Column>
+                  </Grid.Row>
+                  <Grid.Row columns='1'>
+                    <Grid.Column>
                       <FormizDropdownInput
-                        name='exhange'
+                        name='platformId'
                         label='Choose a exhange'
                         search
                         required
@@ -154,15 +176,6 @@ const AddEvent: React.FC<any> = ({
                             image: { src: platform.slug },
                           };
                         })}
-                      />
-                    </Grid.Column>
-                    <Grid.Column>
-                      <FormizSimpleInput
-                        type='date'
-                        name='date'
-                        label='Date'
-                        placeholder='Date'
-                        required='Date is required'
                       />
                     </Grid.Column>
                   </Grid.Row>

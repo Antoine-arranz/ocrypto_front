@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 export const MainWrapper = styled.div((props: any) => {
   return {
-    height: '100vh',
+    minHeight: '100vh',
+    height: 'auto',
     width: '100%',
     display: 'flex',
     flexDirection: 'column',

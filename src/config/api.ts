@@ -57,11 +57,11 @@ export const routesApi = {
   event: {
     getAll: {
       method: 'GET',
-      path: '/:walletId',
+      path: '/event/:walletId',
     },
     add: {
       method: 'POST',
-      path: '/:walletId/add',
+      path: '/event/:walletId/add',
     },
   },
 };

@@ -1,5 +1,5 @@
 const event = (state: any) => {
-  return state.eventReducer;
+  return state.eventReducer.events;
 };
 
 export default { event };

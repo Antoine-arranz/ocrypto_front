@@ -1,9 +1,12 @@
 import eventActionTypes from '../actionTypes';
 import routes from './routes';
 import { messageActionTypes } from '../../messages';
+import eventActions from '../actions';
 const eventMiddlewares = ({ api }: any) => {
   const request = routes({ api });
+
   return (store: any) => (next: any) => async (action: any) => {
+    const { dispatch } = store;
     switch (action.type) {
       case eventActionTypes.GET_ALL_EVENTS:
         try {
@@ -24,11 +27,12 @@ const eventMiddlewares = ({ api }: any) => {
       case eventActionTypes.ADD_EVENTS:
         try {
           next({ type: eventActionTypes.ADD_EVENTS_LOADING });
-          const response = await request.addEvent(action.payload);
+
+          await request.addEvent(action.payload);
           next({
             type: eventActionTypes.ADD_EVENTS_SUCCESS,
-            payload: response.data.result,
           });
+          dispatch(eventActions.getAllevents(action.payload.params));
         } catch (error) {
           next({
             type: eventActionTypes.ADD_EVENTS_ERROR,

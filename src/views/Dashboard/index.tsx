@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import Events from './Events';
+import Events from './../../containers/Events';
 import Chart from './Chart';
 import Assets from './Assets';
 import Wrapper from '../../components/Wrapper';
 import Button from '../../components/Button';
 import AddEvent from '../../containers/AddEvent';
 import Spacer from '../../components/Spacer';
-const Dashboard = ({ user }: any) => {
+const Dashboard = ({ user, events, currentWallet, getAllEvents }: any) => {
   const [addEventModal, setaddEventModal] = useState<boolean>(false);
+
+  useEffect(() => {
+    currentWallet && getAllEvents(currentWallet);
+  }, [currentWallet]);
 
   return (
     <Wrapper

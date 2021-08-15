@@ -9,7 +9,6 @@ const currencyMiddlewares = ({ api }: any) => {
         try {
           next({ type: currencyActionTypes.GET_ALL_CURRENCIES_LOADING });
           const response = await request.getAllCurrencies();
-          console.log('response', response);
           next({
             type: currencyActionTypes.GET_ALL_CURRENCIES_SUCCESS,
             payload: response.data.result,

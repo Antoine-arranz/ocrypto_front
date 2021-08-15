@@ -36,17 +36,12 @@ const eventReducer = (state = initialState, action: any) => {
         ...state,
         loading: false,
       };
-    case actionsTypes.ADD_EVENTS_ERROR:
+    case actionsTypes.ADD_EVENTS_LOADING:
       return {
         ...state,
-        loading: false,
+        loading: true,
       };
-    case actionsTypes.ADD_EVENTS_ERROR:
-      return {
-        ...state,
-        loading: false,
-      };
-    case actionsTypes.ADD_EVENTS_ERROR:
+    case actionsTypes.ADD_EVENTS_SUCCESS:
       return {
         ...state,
         loading: false,

@@ -1,14 +1,16 @@
 import actionsTypes from './actionTypes';
 
 const eventActions = {
-  getAllevents() {
+  getAllevents(params: any) {
     return {
       type: actionsTypes.GET_ALL_EVENTS,
+      payload: params,
     };
   },
-  addEvent() {
+  addEvent({ params, data }: any) {
     return {
       type: actionsTypes.ADD_EVENTS,
+      payload: { params, data },
     };
   },
 };
