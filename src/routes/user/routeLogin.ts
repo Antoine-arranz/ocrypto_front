@@ -4,6 +4,7 @@ import ForgottenPassword from '../../containers/ForgottenPassword';
 import UpdatePassword from '../../containers/UpdatePassword';
 
 import userPaths from './paths';
+import Account from '../../containers/Account';
 const loginRoutes = [
   {
     path: userPaths.login,
@@ -19,6 +20,7 @@ const loginRoutes = [
   },
   { path: userPaths.validateAccount, component: Login },
   { path: userPaths.resetPassword, component: UpdatePassword },
+  { path: userPaths.account, component: Account },
 ];
 
 export default loginRoutes;

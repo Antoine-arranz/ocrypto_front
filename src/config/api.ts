@@ -23,6 +23,10 @@ export const routesApi = {
       method: 'PATCH',
       path: '/user/updatePassword/:token',
     },
+    updateAccount: {
+      method: 'PATCH',
+      path: '/user/:userId',
+    },
   },
   wallet: {
     addNew: {

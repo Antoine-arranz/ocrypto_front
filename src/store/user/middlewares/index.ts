@@ -121,6 +121,23 @@ const userMiddlewares = ({ api }: any) => {
           });
         } catch (error) {
           next({ type: userActionTypes.CHANGE_WALLET_SELECTED_ERROR });
+          next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
+        }
+        break;
+      case userActionTypes.UPDATE_ACCOUNT_INPUT_SUBMIT:
+        try {
+          next({ type: userActionTypes.UPDATE_ACCOUNT_INPUT_SUBMIT_LOADING });
+          const response = await request.updateAccount(action.payload);
+          next({
+            type: userActionTypes.UPDATE_ACCOUNT_INPUT_SUBMIT_SUCCESS,
+            payload: response.data.result,
+          });
+          next({
+            type: messageActionTypes.SUCCESS_MESSAGE,
+            payload: 'your profil has been changed',
+          });
+        } catch (error) {
+          next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
         }
         break;
       default:

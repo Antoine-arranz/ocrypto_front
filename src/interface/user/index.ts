@@ -75,3 +75,10 @@ export type GetWalletsAction = {
   type: string;
   payload: { userId: number };
 };
+
+export interface UserUpdateI {
+  email: string;
+  lastName: string;
+  firstName: string;
+  country: string;
+}

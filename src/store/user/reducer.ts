@@ -110,6 +110,22 @@ const userReducer = (state: userState = initialState, action: any) => {
         loading: false,
         error: action.payload,
       };
+    case actionsTypes.UPDATE_ACCOUNT_INPUT_SUBMIT_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case actionsTypes.UPDATE_ACCOUNT_INPUT_SUBMIT_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+        loading: false,
+      };
+    case actionsTypes.UPDATE_ACCOUNT_INPUT_SUBMIT_ERROR:
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return {
         ...state,

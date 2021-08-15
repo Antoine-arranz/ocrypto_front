@@ -2,6 +2,7 @@ import { UserLoginI, UserSignInI } from '../../interface/formSchema/user';
 import {
   ChangeSelectedWalletAction,
   ResetPasswordAction,
+  UserUpdateI,
 } from '../../interface/user/';
 import actionsTypes from './actionTypes';
 
@@ -42,6 +43,12 @@ const userActions = {
   changeSelectedWallet(data: { walletId: number }): ChangeSelectedWalletAction {
     return {
       type: actionsTypes.CHANGE_WALLET_SELECTED,
+      payload: data,
+    };
+  },
+  updateAccount(data: UserUpdateI) {
+    return {
+      type: actionsTypes.UPDATE_ACCOUNT_INPUT_SUBMIT,
       payload: data,
     };
   },

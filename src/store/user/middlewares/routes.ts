@@ -1,5 +1,6 @@
 import routesApi from '../../../config';
 import { UserLoginI, UserSignInI } from '../../../interface/formSchema/user';
+import { UserUpdateI } from '../../../interface/user';
 const userRoutes = (api: any) => {
   return {
     login(data: UserLoginI) {
@@ -49,6 +50,15 @@ const userRoutes = (api: any) => {
         method: walletAPI.method,
         route: walletAPI.path,
         params: { userId: data.params.userId.params.userId },
+      });
+    },
+    updateAccount(data: any) {
+      const walletAPI = routesApi.routesApi.user.updateAccount;
+      return api.api.request({
+        method: walletAPI.method,
+        route: walletAPI.path,
+        params: { userId: data.params.userId },
+        data: data.data.data,
       });
     },
   };
