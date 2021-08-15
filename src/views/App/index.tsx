@@ -15,7 +15,7 @@ const history = createBrowserHistory();
 const App: React.FC<any> = ({ isAuthenticated, message }) => {
   return (
     <Router history={history}>
-      <Header />
+      <Header history={history} />
       <MainWrapper>
         {message.message && <FloatingMessage message={message} />}
         <Spacer height='100px' />

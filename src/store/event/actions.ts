@@ -13,6 +13,12 @@ const eventActions = {
       payload: { params, data },
     };
   },
+  getQuantityTotal(params: any) {
+    return {
+      type: actionsTypes.GET_QUANTITY_TOTAL,
+      payload: params,
+    };
+  },
 };
 
 export default eventActions;

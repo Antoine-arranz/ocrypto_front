@@ -2,4 +2,8 @@ const event = (state: any) => {
   return state.eventReducer.events;
 };
 
-export default { event };
+const quantity = (state: any) => {
+  return state.eventReducer.quantity;
+};
+
+export default { event, quantity };

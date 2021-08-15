@@ -5,6 +5,7 @@ import Wrapper from '../../../components/Wrapper';
 const Events = ({ events }: any) => {
   return (
     <Wrapper overflow='show'>
+      History:
       <Table singleLine>
         <Table.Header>
           <Table.Row>

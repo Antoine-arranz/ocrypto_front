@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Events from './../../containers/Events';
 import Chart from './Chart';
-import Assets from './Assets';
+import Assets from '../../containers/Asset';
 import Wrapper from '../../components/Wrapper';
 import Button from '../../components/Button';
 import AddEvent from '../../containers/AddEvent';
 import Spacer from '../../components/Spacer';
-const Dashboard = ({ user, events, currentWallet, getAllEvents }: any) => {
+const Dashboard = ({
+  user,
+  events,
+  currentWallet,
+  getAllEvents,
+  getQuantity,
+}: any) => {
   const [addEventModal, setaddEventModal] = useState<boolean>(false);
 
   useEffect(() => {
-    currentWallet && getAllEvents(currentWallet);
+    if (currentWallet) {
+      getAllEvents(currentWallet);
+      getQuantity(currentWallet);
+    }
   }, [currentWallet]);
 
   return (
@@ -42,6 +51,7 @@ const Dashboard = ({ user, events, currentWallet, getAllEvents }: any) => {
       <Chart />
       <Assets />
       <Events />
+      <Spacer height='60px' />
     </Wrapper>
   );
 };

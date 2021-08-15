@@ -15,6 +15,7 @@ export interface EventState {
 
 const initialState = {
   events: [],
+  quantity: [],
   loading: false,
 };
 
@@ -47,6 +48,22 @@ const eventReducer = (state = initialState, action: any) => {
         loading: false,
       };
     case actionsTypes.ADD_EVENTS_ERROR:
+      return {
+        ...state,
+        loading: false,
+      };
+    case actionsTypes.GET_QUANTITY_TOTAL_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case actionsTypes.GET_QUANTITY_TOTAL_SUCCESS:
+      return {
+        ...state,
+        quantity: action.payload,
+        loading: false,
+      };
+    case actionsTypes.GET_QUANTITY_TOTAL_ERROR:
       return {
         ...state,
         loading: false,

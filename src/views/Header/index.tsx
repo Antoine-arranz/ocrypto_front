@@ -1,11 +1,16 @@
 import React from 'react';
 import Wrapper from '../../components/Wrapper';
 import { Dropdown, Menu } from 'semantic-ui-react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const Header = ({ isAuthenticated, changeSelectedWallet, wallets }: any) => {
+const Header = ({
+  isAuthenticated,
+  changeSelectedWallet,
+  wallets,
+  history,
+}: any) => {
   return (
     <Wrapper backgroundColor='#5cba99'>
       <Menu secondary horizontal='true'>
@@ -16,13 +21,13 @@ const Header = ({ isAuthenticated, changeSelectedWallet, wallets }: any) => {
           name='home'
           className='whitecolor'
           onClick={() => {
-            <Redirect to='/' />;
+            history.push('/');
           }}
         />
         {isAuthenticated && (
           <Dropdown
             item
-            placeholder='Wallets'
+            placeholder='Select a wallet'
             className='whitecolor'
             options={wallets.map((wallet: any, i: number) => ({
               key: i,
@@ -31,7 +36,19 @@ const Header = ({ isAuthenticated, changeSelectedWallet, wallets }: any) => {
             }))}
             onChange={(event, { value }) => {
               changeSelectedWallet({ walletId: value });
+              history.push('/');
             }}
+          />
+        )}
+        {isAuthenticated && (
+          <Menu.Item
+            name='wallets'
+            active
+            position='right'
+            onClick={() => {
+              history.push('/wallets');
+            }}
+            className='whitecolor'
           />
         )}
         {isAuthenticated ? (
@@ -40,6 +57,9 @@ const Header = ({ isAuthenticated, changeSelectedWallet, wallets }: any) => {
             active
             position='right'
             className='whitecolor'
+            onClick={() => {
+              history.push('/account');
+            }}
           />
         ) : (
           <Menu.Item
@@ -48,7 +68,7 @@ const Header = ({ isAuthenticated, changeSelectedWallet, wallets }: any) => {
             active
             position='right'
             onClick={() => {
-              <Redirect to='/signIn' />;
+              history.push('/signIn');
             }}
           />
         )}

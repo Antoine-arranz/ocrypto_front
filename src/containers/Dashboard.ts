@@ -7,6 +7,7 @@ const mapState = (state: RootState) => {
   return {
     user: selectors.userSelectors.user(state),
     currentWallet: selectors.userSelectors.currentWalletId(state),
+    events: selectors.eventSelectors.event(state),
   };
 };
 
@@ -14,6 +15,9 @@ const dispatchState = (dispatch: any) => {
   return {
     getAllEvents: (walletId: number) => {
       dispatch(eventActions.getAllevents(walletId));
+    },
+    getQuantity: (walletId: number) => {
+      dispatch(eventActions.getQuantityTotal(walletId));
     },
   };
 };

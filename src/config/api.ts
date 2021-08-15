@@ -67,6 +67,10 @@ export const routesApi = {
       method: 'POST',
       path: '/event/:walletId/add',
     },
+    getQuantity: {
+      method: 'GET',
+      path: '/event/quantity/:walletId',
+    },
   },
 };
 

@@ -18,6 +18,14 @@ const eventRoutes = (api: any) => {
         data: data.data,
       });
     },
+    getQuantityTotal(data: any) {
+      const eventApi = routesApi.routesApi.event.getQuantity;
+      return api.api.request({
+        method: eventApi.method,
+        route: eventApi.path,
+        params: { walletId: data },
+      });
+    },
   };
 };
 export default eventRoutes;

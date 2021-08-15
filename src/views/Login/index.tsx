@@ -25,7 +25,7 @@ const Login: React.FC<LoginPropsI> = ({
     }
     if (user.isAuthenticated) {
       getWallets({ userId: user.id });
-      history.push('/account');
+      history.push('/');
     }
   }, [user]);
 
