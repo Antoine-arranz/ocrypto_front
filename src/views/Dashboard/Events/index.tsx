@@ -15,6 +15,7 @@ const Events = ({ events }: any) => {
             <Table.HeaderCell>Counterparty</Table.HeaderCell>
             <Table.HeaderCell>Quantity</Table.HeaderCell>
             <Table.HeaderCell>Amount</Table.HeaderCell>
+            <Table.HeaderCell>USD</Table.HeaderCell>
             <Table.HeaderCell>Platform</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
@@ -43,6 +44,8 @@ const Events = ({ events }: any) => {
                 </Table.Cell>
                 <Table.Cell>{event.quantity}</Table.Cell>
                 <Table.Cell>{event.amount}</Table.Cell>
+                <Table.Cell>{Math.round(event.usd_amount)}</Table.Cell>
+
                 <Table.Cell>
                   <Image src={event.Platform.slug} rounded size='mini' />
                 </Table.Cell>

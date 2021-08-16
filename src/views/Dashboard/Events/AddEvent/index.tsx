@@ -20,7 +20,6 @@ const AddEvent: React.FC<any> = ({
   const [type, setType] = useState<any>('');
   const eventForm = useForm();
   const save = (value: any) => {
-    console.log('');
     addEvent({ params: currentWalletId, data: value });
     setType('');
     handleClose();
@@ -69,7 +68,9 @@ const AddEvent: React.FC<any> = ({
                     <Grid.Column>
                       <FormizDropdownInput
                         name='CurrencyAsset'
-                        label='Currency Asset'
+                        label={
+                          type === 'buy' ? 'Currency bought' : 'Currency sell'
+                        }
                         search
                         required
                         placeholder='Asset'
@@ -77,7 +78,7 @@ const AddEvent: React.FC<any> = ({
                           return {
                             key: currency.id,
                             text: currency.name,
-                            value: currency.id,
+                            value: currency.apiId,
                             image: { src: currency.image },
                           };
                         })}
@@ -86,7 +87,9 @@ const AddEvent: React.FC<any> = ({
                     <Grid.Column>
                       <FormizDropdownInput
                         name='CurrencyCounterparty'
-                        label='Currency counterparty'
+                        label={
+                          type === 'buy' ? 'Currency sell' : 'Currency bought'
+                        }
                         search
                         required
                         placeholder='Asset'
@@ -94,7 +97,7 @@ const AddEvent: React.FC<any> = ({
                           return {
                             key: currency.id,
                             text: currency.name,
-                            value: currency.id,
+                            value: currency.apid,
                             image: { src: currency.image },
                           };
                         })}
@@ -106,7 +109,9 @@ const AddEvent: React.FC<any> = ({
                       <FormizSimpleInput
                         type='number'
                         name='quantity'
-                        label='Quantity'
+                        label={
+                          type === 'buy' ? 'Quantity bought' : 'Quantity sell'
+                        }
                         placeholder='Quantity'
                         required='Quantity is required'
                       />

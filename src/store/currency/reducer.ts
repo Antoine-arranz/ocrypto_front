@@ -3,7 +3,8 @@ import actionsTypes from './actionTypes';
 export interface currencyState {
   id: number;
   name: string;
-  slug: string;
+  image: string;
+  apiId: string;
 }
 
 const initialState = {

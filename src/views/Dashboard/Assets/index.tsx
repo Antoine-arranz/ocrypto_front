@@ -11,6 +11,7 @@ const Assets = ({ quantity }: any): any => {
             <Table.HeaderCell>Logo</Table.HeaderCell>
             <Table.HeaderCell>Asset</Table.HeaderCell>
             <Table.HeaderCell>Quantity</Table.HeaderCell>
+            <Table.HeaderCell>usd</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -19,10 +20,11 @@ const Assets = ({ quantity }: any): any => {
             quantity.map((asset: any) => (
               <Table.Row>
                 <Table.Cell>
-                  <Image src={asset.slug} rounded size='mini' />
+                  <Image src={asset.image} rounded size='mini' />
                 </Table.Cell>
                 <Table.Cell>{asset.name}</Table.Cell>
                 <Table.Cell>{asset.quantity}</Table.Cell>
+                <Table.HeaderCell>{asset.usd_amount}</Table.HeaderCell>
               </Table.Row>
             ))}
         </Table.Body>
