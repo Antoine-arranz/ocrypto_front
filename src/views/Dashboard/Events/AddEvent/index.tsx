@@ -20,6 +20,7 @@ const AddEvent: React.FC<any> = ({
   const [type, setType] = useState<any>('');
   const eventForm = useForm();
   const save = (value: any) => {
+    console.log('');
     addEvent({ params: currentWalletId, data: value });
     setType('');
     handleClose();
@@ -67,8 +68,8 @@ const AddEvent: React.FC<any> = ({
                   <Grid.Row columns='2'>
                     <Grid.Column>
                       <FormizDropdownInput
-                        name='currencyBougth'
-                        label='currencyBougth'
+                        name='CurrencyAsset'
+                        label='Currency Asset'
                         search
                         required
                         placeholder='Asset'
@@ -77,26 +78,15 @@ const AddEvent: React.FC<any> = ({
                             key: currency.id,
                             text: currency.name,
                             value: currency.id,
-                            image: { src: currency.slug },
+                            image: { src: currency.image },
                           };
                         })}
                       />
                     </Grid.Column>
-                    <Grid.Column>
-                      <FormizSimpleInput
-                        type='number'
-                        name='quantityBought'
-                        label='Quantity Bought'
-                        placeholder='Quantity'
-                        required='Quantity Bought is required'
-                      />
-                    </Grid.Column>
-                  </Grid.Row>
-                  <Grid.Row columns='2'>
                     <Grid.Column>
                       <FormizDropdownInput
-                        name='currencySell'
-                        label='Currency Sell'
+                        name='CurrencyCounterparty'
+                        label='Currency counterparty'
                         search
                         required
                         placeholder='Asset'
@@ -105,18 +95,9 @@ const AddEvent: React.FC<any> = ({
                             key: currency.id,
                             text: currency.name,
                             value: currency.id,
-                            image: { src: currency.slug },
+                            image: { src: currency.image },
                           };
                         })}
-                      />
-                    </Grid.Column>
-                    <Grid.Column>
-                      <FormizSimpleInput
-                        type='number'
-                        name='quantitySell'
-                        label='Quantity Sell'
-                        placeholder='Quantity'
-                        required='Quantity Sell is required'
                       />
                     </Grid.Column>
                   </Grid.Row>
@@ -124,19 +105,19 @@ const AddEvent: React.FC<any> = ({
                     <Grid.Column>
                       <FormizSimpleInput
                         type='number'
-                        name='amountBought'
-                        label='Amount Bought'
-                        placeholder='Amount Bought'
-                        required='Amount Bought is required'
+                        name='quantity'
+                        label='Quantity'
+                        placeholder='Quantity'
+                        required='Quantity is required'
                       />
                     </Grid.Column>
                     <Grid.Column>
                       <FormizSimpleInput
                         type='number'
-                        name='amountSell'
-                        label='Amount Sell'
-                        placeholder='Amount Sell'
-                        required='Amount Sell is required'
+                        name='amount'
+                        label='Amount'
+                        placeholder='Amount'
+                        required='Amount is required'
                       />
                     </Grid.Column>
                   </Grid.Row>

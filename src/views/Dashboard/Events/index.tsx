@@ -11,12 +11,10 @@ const Events = ({ events }: any) => {
           <Table.Row>
             <Table.HeaderCell>Type</Table.HeaderCell>
             <Table.HeaderCell>Date</Table.HeaderCell>
-            <Table.HeaderCell>Currency Bougth</Table.HeaderCell>
-            <Table.HeaderCell>Currency Sell</Table.HeaderCell>
-            <Table.HeaderCell>Quantity Bougth</Table.HeaderCell>
-            <Table.HeaderCell>Quantity Sell</Table.HeaderCell>
-            <Table.HeaderCell>Amount Bougth</Table.HeaderCell>
-            <Table.HeaderCell>Amount Sell</Table.HeaderCell>
+            <Table.HeaderCell>Asset</Table.HeaderCell>
+            <Table.HeaderCell>Counterparty</Table.HeaderCell>
+            <Table.HeaderCell>Quantity</Table.HeaderCell>
+            <Table.HeaderCell>Amount</Table.HeaderCell>
             <Table.HeaderCell>Platform</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
@@ -34,15 +32,17 @@ const Events = ({ events }: any) => {
                   })}
                 </Table.Cell>
                 <Table.Cell>
-                  <Image src={event.Currency.slug} rounded size='mini' />
+                  <Image src={event.CurrencyAsset.image} rounded size='mini' />
                 </Table.Cell>
                 <Table.Cell>
-                  <Image src={event.Currency.slug} rounded size='mini' />
+                  <Image
+                    src={event.CurrencyCounterparty.image}
+                    rounded
+                    size='mini'
+                  />
                 </Table.Cell>
-                <Table.Cell>{event.quantityBougth}</Table.Cell>
-                <Table.Cell>{event.quantitySell}</Table.Cell>
-                <Table.Cell>{event.amountBought}</Table.Cell>
-                <Table.Cell>{event.amountSell}</Table.Cell>
+                <Table.Cell>{event.quantity}</Table.Cell>
+                <Table.Cell>{event.amount}</Table.Cell>
                 <Table.Cell>
                   <Image src={event.Platform.slug} rounded size='mini' />
                 </Table.Cell>

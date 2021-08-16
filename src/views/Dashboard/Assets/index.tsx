@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Image, Table } from 'semantic-ui-react';
 import Wrapper from '../../../components/Wrapper';
 
 const Assets = ({ quantity }: any): any => {
@@ -18,8 +18,10 @@ const Assets = ({ quantity }: any): any => {
           {quantity &&
             quantity.map((asset: any) => (
               <Table.Row>
-                <Table.Cell>logo</Table.Cell>
-                <Table.Cell>{asset.CurrencyBought_Id}</Table.Cell>
+                <Table.Cell>
+                  <Image src={asset.slug} rounded size='mini' />
+                </Table.Cell>
+                <Table.Cell>{asset.name}</Table.Cell>
                 <Table.Cell>{asset.quantity}</Table.Cell>
               </Table.Row>
             ))}
