@@ -13,7 +13,7 @@ const initialState: WalletState = {
   loading: false,
 };
 
-const walletReducer = (state = initialState, action: any) => {
+const walletReducer = (state: WalletState = initialState, action: any) => {
   switch (action.type) {
     case walletActions.ADD_NEW_WALLET_SUBMIT_LOADING:
       return {

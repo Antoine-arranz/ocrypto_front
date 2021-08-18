@@ -159,7 +159,7 @@ const AddEvent: React.FC<any> = ({
                             key: platform.id,
                             text: platform.name,
                             value: platform.id,
-                            image: { src: platform.slug },
+                            image: { src: platform.image },
                           };
                         })}
                       />

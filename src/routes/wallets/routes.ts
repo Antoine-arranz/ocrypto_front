@@ -1,7 +1,7 @@
 import Wallets from '../../containers/Wallets';
 
 import walletPaths from './paths';
-const WalletsRoutes: any = [
+const WalletsRoutes: Array<{ path: string; component: React.FC<any> }> = [
   {
     path: walletPaths.getWallets,
     component: Wallets,

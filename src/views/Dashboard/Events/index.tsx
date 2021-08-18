@@ -47,7 +47,7 @@ const Events = ({ events }: any) => {
                 <Table.Cell>{Math.round(event.usd_amount)}</Table.Cell>
 
                 <Table.Cell>
-                  <Image src={event.Platform.slug} rounded size='mini' />
+                  <Image src={event.Platform.image} rounded size='mini' />
                 </Table.Cell>
               </Table.Row>
             ))}

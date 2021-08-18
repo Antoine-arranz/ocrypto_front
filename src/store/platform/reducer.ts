@@ -4,7 +4,7 @@ import actionsTypes from './actionTypes';
 export interface platformState {
   id: number;
   name: string;
-  slug: string;
+  image: string;
 }
 
 const initialState = {
