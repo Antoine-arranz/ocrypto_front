@@ -76,7 +76,7 @@ const AddEvent: React.FC<any> = ({
                         placeholder='Asset'
                         options={currencies.currencies.map((currency: any) => {
                           return {
-                            key: currency.id,
+                            key: currency.apid,
                             text: currency.name,
                             value: currency.apiId,
                             image: { src: currency.image },
@@ -95,9 +95,9 @@ const AddEvent: React.FC<any> = ({
                         placeholder='Asset'
                         options={currencies.currencies.map((currency: any) => {
                           return {
-                            key: currency.id,
+                            key: currency.apid,
                             text: currency.name,
-                            value: currency.apid,
+                            value: currency.apiId,
                             image: { src: currency.image },
                           };
                         })}
