@@ -19,6 +19,10 @@ const dispatchState = (dispatch: any) => {
     getQuantity: (walletId: number) => {
       dispatch(eventActions.getQuantityTotal(walletId));
     },
+    getChart: (walletId: number) => {
+      console.log(walletId);
+      dispatch(eventActions.getChart(walletId));
+    },
   };
 };
 export default connect(mapState, dispatchState)(Dashboard);

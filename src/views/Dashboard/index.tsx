@@ -12,6 +12,7 @@ const Dashboard = ({
   currentWallet,
   getAllEvents,
   getQuantity,
+  getChart,
 }: any) => {
   const [addEventModal, setaddEventModal] = useState<boolean>(false);
 
@@ -19,6 +20,7 @@ const Dashboard = ({
     if (currentWallet) {
       getAllEvents(currentWallet);
       getQuantity(currentWallet);
+      getChart(currentWallet);
     }
   }, [currentWallet]);
 

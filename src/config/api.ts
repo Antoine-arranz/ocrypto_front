@@ -72,6 +72,12 @@ export const routesApi = {
       path: '/event/quantity/:walletId',
     },
   },
+  chart: {
+    getChart: {
+      method: 'GET',
+      path: '/chart/:walletId',
+    },
+  },
 };
 
 export default routesApi;

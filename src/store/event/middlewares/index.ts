@@ -6,6 +6,7 @@ const eventMiddlewares = ({ api }: any) => {
   const request = routes({ api });
 
   return (store: any) => (next: any) => async (action: any) => {
+    console.log(action.type);
     const { dispatch } = store;
     switch (action.type) {
       case eventActionTypes.GET_ALL_EVENTS:
@@ -58,7 +59,12 @@ const eventMiddlewares = ({ api }: any) => {
           next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
         }
         break;
-
+      case eventActionTypes.GET_CHART:
+        try {
+          console.log('ici');
+          const zizi = await request.getChart(action.payload);
+        } catch (error) {}
+        break;
       default:
         next(action);
         break;
