@@ -6,7 +6,7 @@ export interface ChartState {}
 const initialState = {
   timestamps: [],
   currencies: [],
-  boughtPrice: [],
+  usdAmount: [],
   loading: false,
 };
 

@@ -11,7 +11,6 @@ const chartMiddlewares = ({ api }: any) => {
         try {
           next({ type: chartActionTypes.GET_CHART_LOADING });
           const zizi = await request.getChart(action.payload);
-          console.log('zizi', zizi);
           next({
             type: chartActionTypes.GET_CHART_SUCCESS,
             payload: zizi.data.result,
