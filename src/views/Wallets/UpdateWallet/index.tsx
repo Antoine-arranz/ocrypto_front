@@ -1,5 +1,5 @@
 import { Formiz, useForm } from '@formiz/core';
-import React, { useState } from 'react';
+import React from 'react';
 import FormizSimpleInput from '../../../components/Formiz';
 import Spacer from '../../../components/Spacer';
 import Wrapper from '../../../components/Wrapper';

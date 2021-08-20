@@ -7,6 +7,7 @@ const initialState = {
   timestamps: [],
   currencies: [],
   boughtPrice: [],
+  loading: false,
 };
 
 const eventReducer = (state = initialState, action: any) => {
@@ -20,8 +21,12 @@ const eventReducer = (state = initialState, action: any) => {
       return {
         ...state,
         loading: false,
-        currencies: [...action.payload.currenciesWeighted],
-        timestamps: [...action.payload.timestampsChart],
+        ...action.payload,
+      };
+    case actionsTypes.GET_CHART_ERROR:
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return {

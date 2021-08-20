@@ -15,7 +15,6 @@ import { walletActions } from '../store/wallets';
 const mapState = (state: RootState) => {
   return {
     user: selectors.userSelectors.user(state),
-    // isAuthenticated: selectors.userSelectors.isAuthenticated(state),
   };
 };
 

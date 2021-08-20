@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { isPropertySignature } from 'typescript';
 import colors from '../../theme';
 
 const selectColor = (color: any) => {
@@ -15,4 +16,8 @@ export const StyledText = styled.span(({ props }: any) => ({
   maxWidth: props.maxWidth,
   wordWrap: props.wordWrap,
   lineHeight: 'normal',
+  border: props.border,
+  padding: props.padding,
+  borderColor: selectColor(props.borderColor),
+  borderRadius: props.borderRadius,
 }));

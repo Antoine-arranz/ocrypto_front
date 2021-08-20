@@ -9,6 +9,7 @@ const mapState = (state: RootState) => {
     user: selectors.userSelectors.user(state),
     currentWallet: selectors.userSelectors.currentWalletId(state),
     events: selectors.eventSelectors.event(state),
+    chartLoading: selectors.chartSelectors.chartLoading(state),
   };
 };
 

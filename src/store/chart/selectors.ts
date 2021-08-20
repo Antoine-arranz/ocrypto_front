@@ -1,5 +1,8 @@
 const chartData = (state: any) => {
   return state.chartReducer;
 };
+const chartLoading = (state: any) => {
+  return state.chartReducer.loading;
+};
 
-export default { chartData };
+export default { chartData, chartLoading };

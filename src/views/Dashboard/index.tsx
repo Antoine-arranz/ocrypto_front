@@ -6,16 +6,20 @@ import Wrapper from '../../components/Wrapper';
 import Button from '../../components/Button';
 import AddEvent from '../../containers/AddEvent';
 import Spacer from '../../components/Spacer';
+import Loader from '../../components/Loader';
+import TextCustom from '../../components/TextCustom';
+import FloatingMessage from '../../components/FloatingMessage';
 const Dashboard = ({
   user,
-  events,
   currentWallet,
   getAllEvents,
   getQuantity,
   getChart,
+  chartLoading,
+  events,
 }: any) => {
   const [addEventModal, setaddEventModal] = useState<boolean>(false);
-
+  console.log(events);
   useEffect(() => {
     if (currentWallet) {
       getAllEvents(currentWallet);
@@ -50,13 +54,37 @@ const Dashboard = ({
         handleClose={() => setaddEventModal(false)}
         walletId={user.walletSelected}
       />
-
-      <Chart />
-      <Spacer height='60px' />
-      <Assets />
-      <Spacer height='40px' />
-      <Events />
-      <Spacer height='60px' />
+      {chartLoading && <Loader />}
+      {currentWallet ? (
+        events.length > 0 ? (
+          <Wrapper>
+            <Chart /> <Spacer height='60px' />
+            <Assets />
+            <Spacer height='40px' />
+            <Events />
+            <Spacer height='60px' />
+          </Wrapper>
+        ) : (
+          <TextCustom
+            border='1px solid black'
+            padding='4em'
+            fontSize='2em'
+            borderRadius='5%'
+          >
+            You don't have any Event, use the button to add one
+          </TextCustom>
+        )
+      ) : (
+        <TextCustom
+          border='1px solid black'
+          padding='4em'
+          fontSize='2em'
+          borderRadius='5%'
+        >
+          You must select a wallet first
+        </TextCustom>
+      )}
+      {}
     </Wrapper>
   );
 };

@@ -15,4 +15,8 @@ interface TextCustomI {
   color?: string;
   maxWidth?: string;
   wordWrap?: string;
+  border?: string;
+  padding?: string;
+  borderColor?: string;
+  borderRadius?: string;
 }

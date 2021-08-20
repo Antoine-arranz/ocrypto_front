@@ -13,6 +13,7 @@ import MainWrapper from '../../components/MainWrapper';
 const history = createBrowserHistory();
 
 const App: React.FC<any> = ({ isAuthenticated, message }) => {
+  console.log('message', message);
   return (
     <Router history={history}>
       <Header history={history} />

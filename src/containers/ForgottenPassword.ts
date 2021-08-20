@@ -1,6 +1,5 @@
 import { Dispatch } from 'react';
 import { connect } from 'react-redux';
-import { RootState } from '..';
 import { ForgotPasswordAction } from '../interface/user';
 import { userActions } from '../store/user';
 
