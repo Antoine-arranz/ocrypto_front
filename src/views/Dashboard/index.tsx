@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Events from './../../containers/Events';
-import Chart from './Chart';
+import Chart from '../../containers/Chart';
 import Assets from '../../containers/Asset';
 import Wrapper from '../../components/Wrapper';
 import Button from '../../components/Button';
@@ -52,6 +52,7 @@ const Dashboard = ({
       />
 
       <Chart />
+      <Spacer height='60px' />
       <Assets />
       <Spacer height='40px' />
       <Events />

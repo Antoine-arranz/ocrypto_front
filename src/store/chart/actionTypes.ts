@@ -1,0 +1,8 @@
+const actionsTypes = {
+  GET_CHART: 'GET_CHART',
+  GET_CHART_SUCCESS: 'GET_CHART_SUCCESS',
+  GET_CHART_LOADING: 'GET_CHART_LOADING',
+  GET_CHART_ERROR: 'GET_CHART_ERROR',
+};
+
+export default actionsTypes;

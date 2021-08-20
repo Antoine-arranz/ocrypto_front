@@ -5,6 +5,7 @@ import { walletReducer } from './wallets';
 import { platformReducer } from './platform';
 import { currencyReducer } from './currency';
 import { eventReducer } from './event';
+import { chartReducer } from './chart';
 
 const reducers = combineReducers({
   userReducer,
@@ -13,6 +14,7 @@ const reducers = combineReducers({
   platformReducer,
   currencyReducer,
   eventReducer,
+  chartReducer,
 });
 
 export default reducers;

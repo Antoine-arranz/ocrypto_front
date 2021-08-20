@@ -2,11 +2,11 @@ import eventActionTypes from '../actionTypes';
 import routes from './routes';
 import { messageActionTypes } from '../../messages';
 import eventActions from '../actions';
+import { chartActions } from '../../chart';
 const eventMiddlewares = ({ api }: any) => {
   const request = routes({ api });
 
   return (store: any) => (next: any) => async (action: any) => {
-    console.log(action.type);
     const { dispatch } = store;
     switch (action.type) {
       case eventActionTypes.GET_ALL_EVENTS:
@@ -51,6 +51,7 @@ const eventMiddlewares = ({ api }: any) => {
           });
           dispatch(eventActions.getAllevents(action.payload.params));
           dispatch(eventActions.getQuantityTotal(action.payload.params));
+          dispatch(chartActions.getchart(action.payload.params));
         } catch (error) {
           next({
             type: eventActionTypes.ADD_EVENTS_ERROR,
@@ -59,12 +60,7 @@ const eventMiddlewares = ({ api }: any) => {
           next({ type: messageActionTypes.ERROR_MESSAGE, payload: error });
         }
         break;
-      case eventActionTypes.GET_CHART:
-        try {
-          console.log('ici');
-          const zizi = await request.getChart(action.payload);
-        } catch (error) {}
-        break;
+
       default:
         next(action);
         break;

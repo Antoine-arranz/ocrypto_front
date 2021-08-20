@@ -5,6 +5,7 @@ import walletSelectors from './wallets/selectors';
 import platformSelectors from './platform/selectors';
 import currencySelectors from './currency/selectors';
 import eventSelectors from './event/selectors';
+import chartSelectors from './chart/selectors';
 
 export default {
   userSelectors,
@@ -14,4 +15,5 @@ export default {
   platformSelectors,
   currencySelectors,
   eventSelectors,
+  chartSelectors,
 };

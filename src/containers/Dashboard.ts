@@ -3,6 +3,7 @@ import Dashboard from '../views/Dashboard';
 import { RootState } from '..';
 import selectors from '../store/selectors';
 import { eventActions } from '../store/event';
+import { chartActions } from '../store/chart';
 const mapState = (state: RootState) => {
   return {
     user: selectors.userSelectors.user(state),
@@ -20,8 +21,7 @@ const dispatchState = (dispatch: any) => {
       dispatch(eventActions.getQuantityTotal(walletId));
     },
     getChart: (walletId: number) => {
-      console.log(walletId);
-      dispatch(eventActions.getChart(walletId));
+      dispatch(chartActions.getchart(walletId));
     },
   };
 };

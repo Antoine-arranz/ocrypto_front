@@ -26,14 +26,6 @@ const eventRoutes = (api: any) => {
         params: { walletId: data },
       });
     },
-    getChart(data: any) {
-      const eventApi = routesApi.routesApi.chart.getChart;
-      return api.api.request({
-        method: eventApi.method,
-        route: eventApi.path,
-        params: { walletId: data },
-      });
-    },
   };
 };
 export default eventRoutes;

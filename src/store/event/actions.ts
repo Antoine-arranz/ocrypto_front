@@ -19,12 +19,6 @@ const eventActions = {
       payload: params,
     };
   },
-  getChart(params: any) {
-    return {
-      type: actionsTypes.GET_CHART,
-      payload: params,
-    };
-  },
 };
 
 export default eventActions;

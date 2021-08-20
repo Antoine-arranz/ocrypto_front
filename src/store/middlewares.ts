@@ -3,6 +3,7 @@ import walletMiddlewares from './wallets/middlewares';
 import platformMiddlewares from './platform/middlewares';
 import currencyMiddlewares from './currency/middlewares';
 import eventMiddlewares from './event/middlewares';
+import chartMiddlewares from './chart/middlewares';
 
 export function apiMiddlewares({ api }: any) {
   return [
@@ -11,5 +12,6 @@ export function apiMiddlewares({ api }: any) {
     platformMiddlewares({ api }),
     currencyMiddlewares({ api }),
     eventMiddlewares({ api }),
+    chartMiddlewares({ api }),
   ];
 }
