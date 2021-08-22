@@ -1,5 +1,5 @@
 const currency = (state: any) => {
-  return state.currencyReducer;
+  return state.currency;
 };
 
 export default { currency };

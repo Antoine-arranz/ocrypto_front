@@ -9,14 +9,14 @@ const Events = ({ events }: any) => {
       <Table singleLine>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Type</Table.HeaderCell>
-            <Table.HeaderCell>Date</Table.HeaderCell>
-            <Table.HeaderCell>Asset</Table.HeaderCell>
-            <Table.HeaderCell>Counterparty</Table.HeaderCell>
-            <Table.HeaderCell>Quantity</Table.HeaderCell>
-            <Table.HeaderCell>Amount</Table.HeaderCell>
-            <Table.HeaderCell>USD</Table.HeaderCell>
-            <Table.HeaderCell>Platform</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>Type</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>Date</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>Asset</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>Counterparty</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>Quantity</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>Amount</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>USD</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center'>Platform</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -24,8 +24,8 @@ const Events = ({ events }: any) => {
           {events &&
             events.map((event: any) => (
               <Table.Row>
-                <Table.Cell>{event.type}</Table.Cell>
-                <Table.Cell>
+                <Table.Cell textAlign='center'>{event.type}</Table.Cell>
+                <Table.Cell textAlign='center'>
                   {new Date(event.date).toLocaleDateString('en', {
                     year: 'numeric',
                     month: '2-digit',
@@ -33,21 +33,37 @@ const Events = ({ events }: any) => {
                   })}
                 </Table.Cell>
                 <Table.Cell>
-                  <Image src={event.CurrencyAsset.image} rounded size='mini' />
+                  <Image
+                    src={event.CurrencyAsset.image}
+                    rounded
+                    size='mini'
+                    centered
+                  />
                 </Table.Cell>
                 <Table.Cell>
                   <Image
                     src={event.CurrencyCounterparty.image}
                     rounded
                     size='mini'
+                    centered
                   />
                 </Table.Cell>
-                <Table.Cell>{event.quantity}</Table.Cell>
-                <Table.Cell>{event.amount}</Table.Cell>
-                <Table.Cell>{Math.round(event.usd_amount)}</Table.Cell>
+                <Table.Cell textAlign='center'>{event.quantity}</Table.Cell>
+                <Table.Cell textAlign='center'>
+                  {event.amount}{' '}
+                  {event.CurrencyCounterparty.symbol.toUpperCase()}
+                </Table.Cell>
+                <Table.Cell textAlign='center'>
+                  {Math.round(event.usdAmount)}
+                </Table.Cell>
 
                 <Table.Cell>
-                  <Image src={event.Platform.image} rounded size='mini' />
+                  <Image
+                    src={event.Platform.image}
+                    rounded
+                    size='mini'
+                    centered
+                  />
                 </Table.Cell>
               </Table.Row>
             ))}

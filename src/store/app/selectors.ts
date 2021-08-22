@@ -1,4 +1,5 @@
-const isUserAuthenticated = (state:any) => {
-    return state.userReducer.isAuthenticated};
+const isUserAuthenticated = (state: any) => {
+  return state.user.isAuthenticated;
+};
 
-export default isUserAuthenticated
+export default isUserAuthenticated;

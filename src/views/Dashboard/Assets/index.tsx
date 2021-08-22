@@ -5,6 +5,7 @@ import Wrapper from '../../../components/Wrapper';
 const Assets = ({ quantity }: any): any => {
   return (
     <Wrapper width='80%' margin='auto'>
+      {quantity.lenght === 0 ? 'Asset:' : 'Assets:'}
       <Table singleLine>
         <Table.Header>
           <Table.Row>
@@ -24,9 +25,9 @@ const Assets = ({ quantity }: any): any => {
                 </Table.Cell>
                 <Table.Cell>{asset.Currency.name}</Table.Cell>
                 <Table.Cell>{asset.currencyTotal}</Table.Cell>
-                {
-                  //<Table.HeaderCell>{asset.usd_amount}</Table.HeaderCell>
-                }
+                <Table.HeaderCell>
+                  {Math.floor(asset.usdAmount)}
+                </Table.HeaderCell>
               </Table.Row>
             ))}
         </Table.Body>

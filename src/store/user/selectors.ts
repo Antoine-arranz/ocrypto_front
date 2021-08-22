@@ -1,9 +1,9 @@
 const user = (state: any) => {
-  return state.userReducer;
+  return state.user.isAuthenticated;
 };
 
 const currentWalletId = (state: any) => {
-  return state.userReducer.walletSelected;
+  return state.user.walletSelected;
 };
 
 export default { user, currentWalletId };

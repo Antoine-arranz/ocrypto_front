@@ -1,5 +1,5 @@
 const platform = (state: any) => {
-  return state.platformReducer;
+  return state.platform;
 };
 
 export default { platform };

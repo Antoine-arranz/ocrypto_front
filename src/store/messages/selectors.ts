@@ -1,5 +1,5 @@
 const message = (state: any) => {
-  return state.messageReducer;
+  return state.message;
 };
 
 export default { message };

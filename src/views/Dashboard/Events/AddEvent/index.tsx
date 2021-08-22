@@ -17,7 +17,7 @@ const AddEvent: React.FC<any> = ({
   currencies,
   addEvent,
 }) => {
-  const [type, setType] = useState<any>('');
+  const [type, setType] = useState<string>('');
   const eventForm = useForm();
   const save = (value: any) => {
     addEvent({ params: currentWalletId, data: value });

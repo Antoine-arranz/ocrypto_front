@@ -3,7 +3,8 @@ import _ from 'lodash';
 async function get(key: any, toObject = false) {
   const value = localStorage.getItem(key);
   if (toObject) {
-    return value && JSON.parse(value);
+    //@ts-ignore
+    return JSON.parse(value);
   }
   return value;
 }

@@ -15,7 +15,7 @@ const walletMiddlewares = ({ api }: any) => {
           next({ type: walletActionsTypes.ADD_NEW_WALLET_SUBMIT_LOADING });
           const response = await request.addNewWallet({ ...action.payload });
           next({
-            type: walletActionsTypes.ADD_NEW_WALLET_SUBMIT_SUCESS,
+            type: walletActionsTypes.ADD_NEW_WALLET_SUBMIT_SUCCESS,
             payload: response.data.result,
           });
         } catch (error) {

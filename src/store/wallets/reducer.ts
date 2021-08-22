@@ -20,7 +20,7 @@ const walletReducer = (state: WalletState = initialState, action: any) => {
         ...state,
         loading: true,
       };
-    case walletActions.ADD_NEW_WALLET_SUBMIT_SUCESS:
+    case walletActions.ADD_NEW_WALLET_SUBMIT_SUCCESS:
       return {
         ...state,
         loading: false,

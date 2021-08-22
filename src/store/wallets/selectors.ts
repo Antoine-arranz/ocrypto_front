@@ -1,8 +1,8 @@
 const wallets = (state: any) => {
-  return state.walletReducer.wallet;
+  return state.wallet.wallet;
 };
 
 const loading = (state: any) => {
-  return state.walletReducer.loading;
+  return state.wallet.loading;
 };
 export default { wallets, loading };

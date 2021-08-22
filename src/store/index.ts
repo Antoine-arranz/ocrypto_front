@@ -4,19 +4,14 @@ import { apiMiddlewares } from './middlewares';
 import thunk from 'redux-thunk';
 import rootReducer from './rootReducers';
 import storage from 'redux-persist/lib/storage';
+import { composeWithDevTools } from 'redux-devtools-extension';
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: any;
   }
 }
 
-const composeEnhancers =
-  (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      trace: true,
-      traceLimit: 25,
-    })) ||
-  compose;
+const composeEnhancers = composeWithDevTools;
 
 const configureStore = (defaultState: any, services: any) => {
   const api = services.get('api');
@@ -26,9 +21,9 @@ const configureStore = (defaultState: any, services: any) => {
   };
 
   const persistedReducer = persistReducer(config, rootReducer);
+  console.log(persistedReducer);
   const store = createStore(
     persistedReducer,
-    defaultState,
     composeEnhancers(applyMiddleware(thunk, ...apiMiddlewares({ api })))
   );
 

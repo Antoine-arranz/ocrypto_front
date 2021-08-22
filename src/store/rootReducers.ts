@@ -8,13 +8,15 @@ import { eventReducer } from './event';
 import { chartReducer } from './chart';
 
 const reducers = combineReducers({
-  userReducer,
-  messageReducer,
-  walletReducer,
-  platformReducer,
-  currencyReducer,
-  eventReducer,
-  chartReducer,
+  user: userReducer,
+  message: messageReducer,
+  wallet: walletReducer,
+  platform: platformReducer,
+  currency: currencyReducer,
+  event: eventReducer,
+  chart: chartReducer,
 });
 
-export default reducers;
+export default (state: any, action: any) => {
+  return reducers(state, action);
+};
