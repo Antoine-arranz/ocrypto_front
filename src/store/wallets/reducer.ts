@@ -78,9 +78,7 @@ const walletReducer = (state: WalletState = initialState, action: any) => {
         loading: false,
       };
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 };
 

@@ -10,7 +10,7 @@ const initialState = {
   loading: false,
 };
 
-const eventReducer = (state = initialState, action: any) => {
+const chartReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case actionsTypes.GET_CHART_LOADING:
       return {
@@ -29,10 +29,8 @@ const eventReducer = (state = initialState, action: any) => {
         loading: false,
       };
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 };
 
-export default eventReducer;
+export default chartReducer;

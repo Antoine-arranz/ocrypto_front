@@ -8,7 +8,7 @@ const INITIAL_STATE = {
   httpCode: null,
 };
 
-const reducer = (state = INITIAL_STATE, action: any) => {
+const messageReducer = (state = INITIAL_STATE, action: any) => {
   switch (action.type) {
     case actionTypes.SUCCESS_MESSAGE:
       return {
@@ -37,4 +37,4 @@ const reducer = (state = INITIAL_STATE, action: any) => {
   }
 };
 
-export default reducer;
+export default messageReducer;

@@ -21,7 +21,7 @@ const configureStore = (defaultState: any, services: any) => {
   };
 
   const persistedReducer = persistReducer(config, rootReducer);
-  console.log(persistedReducer);
+
   const store = createStore(
     persistedReducer,
     composeEnhancers(applyMiddleware(thunk, ...apiMiddlewares({ api })))

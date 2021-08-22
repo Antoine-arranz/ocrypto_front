@@ -12,7 +12,7 @@ const initialState = {
   loading: false,
 };
 
-const platformReducer = (state = initialState, action: any) => {
+const currencyReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case actionsTypes.GET_ALL_CURRENCIES_LOADING:
       return {
@@ -31,10 +31,8 @@ const platformReducer = (state = initialState, action: any) => {
         loading: false,
       };
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 };
 
-export default platformReducer;
+export default currencyReducer;

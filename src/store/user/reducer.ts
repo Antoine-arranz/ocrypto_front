@@ -127,9 +127,7 @@ const userReducer = (state: userState = initialState, action: any) => {
         loading: false,
       };
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 };
 

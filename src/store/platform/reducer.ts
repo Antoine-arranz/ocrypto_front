@@ -31,9 +31,7 @@ const platformReducer = (state = initialState, action: any) => {
         loading: false,
       };
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 };
 

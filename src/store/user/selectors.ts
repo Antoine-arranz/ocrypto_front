@@ -1,5 +1,5 @@
 const user = (state: any) => {
-  return state.user.isAuthenticated;
+  return state.user;
 };
 
 const currentWalletId = (state: any) => {
