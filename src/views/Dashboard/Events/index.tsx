@@ -1,11 +1,14 @@
 import React from 'react';
 import { Image, Table } from 'semantic-ui-react';
+import TextCustom from '../../../components/TextCustom';
 import Wrapper from '../../../components/Wrapper';
 
 const Events = ({ events }: any) => {
   return (
     <Wrapper overflow='show'>
-      History:
+      <TextCustom color='#5cba99' fontWeight='bold'>
+        History :
+      </TextCustom>
       <Table singleLine>
         <Table.Header>
           <Table.Row>

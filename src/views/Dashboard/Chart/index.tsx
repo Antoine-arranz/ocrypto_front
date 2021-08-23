@@ -28,37 +28,39 @@ const Chart = ({ data }: any) => {
         pointHoverBackgroundColor: null,
         pointHoverBorderColor: null,
         pointHoverBorderWidth: null,
-        pointRadius: 2, // size of point
+        pointRadius: 3, // size of point
         pointHitRadius: 5,
       },
       {
         label: 'quantity',
         data: data.usdAmount,
         fill: false,
+        stepped: false,
         lineTension: 0, // bcg of chart
-        borderColor: 'rgba(251, 255, 0, 0.4)', // line of chart
+        borderColor: 'rgb(92, 186, 153)', // line of chart
         borderCapStyle: 'butt',
         borderDash: [],
-        borderDashOffset: 5,
+        borderDashOffset: 1,
         borderJoinStyle: 'miter',
         pointBorderColor: 'teal', // border color of point
-        pointBackgroundColor: 'teal', // bcg color of point
+        pointBackgroundColor: 'rgb(92, 186, 153)', // bcg color of point
         borderWidth: 1.5,
-        hoverBackgroundColor: null,
+        hoverBackgroundColor: 'rgb(92, 186, 153)',
         hoverBorderColor: null,
         pointBorderWidth: 1,
-        pointHoverRadius: 5,
+        pointHoverRadius: 10,
         pointHoverBackgroundColor: null,
         pointHoverBorderColor: null,
         pointHoverBorderWidth: null,
-        pointRadius: 2, // size of point
+        pointRadius: 3, // size of point
         pointHitRadius: 5,
       },
     ],
   };
 
   const options = {
-    redraw: true,
+    responsive: true,
+    redraw: false,
     scales: {
       yAxes: [
         {
@@ -70,7 +72,7 @@ const Chart = ({ data }: any) => {
     },
   };
   return (
-    <Wrapper margin='auto' width='51em'>
+    <Wrapper margin='auto' width='100%' height='100%'>
       <Line data={dataChart} options={options} />
     </Wrapper>
   );

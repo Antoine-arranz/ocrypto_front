@@ -44,7 +44,7 @@ const Header = ({
           <Menu.Item
             name='wallets'
             active
-            position='right'
+            position='left'
             onClick={() => {
               history.push('/wallets');
             }}

@@ -8,7 +8,7 @@ import AddEvent from '../../containers/AddEvent';
 import Spacer from '../../components/Spacer';
 import Loader from '../../components/Loader';
 import TextCustom from '../../components/TextCustom';
-import FloatingMessage from '../../components/FloatingMessage';
+
 const Dashboard = ({
   user,
   currentWallet,
@@ -20,6 +20,7 @@ const Dashboard = ({
 }: any) => {
   const [addEventModal, setaddEventModal] = useState<boolean>(false);
   useEffect(() => {
+    console.log('useffect');
     if (currentWallet) {
       getAllEvents(currentWallet);
       getQuantity(currentWallet);
