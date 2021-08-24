@@ -1,12 +1,14 @@
 import ReactDOM from 'react-dom';
 import App from './containers/App';
 import './styles/_reset.scss';
+import './styles/index.scss';
 import { Provider } from 'react-redux';
 import './theme/styles.css';
 import configureStore from './store';
 import services from './services';
 import config from './config';
 import { PersistGate } from 'redux-persist/integration/react';
+import 'semantic-ui-css/semantic.min.css';
 
 export type RootState = ReturnType<typeof store.getState>;
 const servicesContainer = services(config);

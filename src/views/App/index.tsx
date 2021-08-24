@@ -1,14 +1,12 @@
 import React from 'react';
 import Header from '../../containers/Header';
 import Footer from '../Footer';
-import 'semantic-ui-css/semantic.min.css';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 import routes from '../../routes';
 import loginRoutes from '../../routes/user/routeLogin';
 import FloatingMessage from '../../containers/FloatingMessage';
-import Spacer from '../../components/Spacer';
 import MainWrapper from '../../components/MainWrapper';
 const history = createBrowserHistory();
 
