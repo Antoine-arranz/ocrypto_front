@@ -3,17 +3,16 @@ import chartActionTypes from '../actionTypes';
 import routes from './routes';
 const chartMiddlewares = ({ api }: any) => {
   const request = routes({ api });
-
   return (store: any) => (next: any) => async (action: any) => {
     const { dispatch } = store;
     switch (action.type) {
       case chartActionTypes.GET_CHART:
         try {
           next({ type: chartActionTypes.GET_CHART_LOADING });
-          const zizi = await request.getChart(action.payload);
+          const result = await request.getChart(action.payload);
           next({
             type: chartActionTypes.GET_CHART_SUCCESS,
-            payload: zizi.data.result,
+            payload: result.data.result,
           });
         } catch (error) {
           next({

@@ -1,10 +1,10 @@
 import actionsTypes from './actionTypes';
 
 const chartActions = {
-  getchart(params: any) {
+  getchart(walletId: number) {
     return {
       type: actionsTypes.GET_CHART,
-      payload: params,
+      payload: walletId,
     };
   },
 };
