@@ -12,14 +12,14 @@ const Chart = ({ data }: any) => {
         label: 'Market price',
         data: data.currencies,
         fill: false,
-        lineTension: 0, // bcg of chart
-        borderColor: 'rgb(115, 109, 186)', // line of chart
+        lineTension: 0,
+        borderColor: 'rgb(115, 109, 186)',
         borderCapStyle: 'butt',
         borderDash: [],
         borderDashOffset: 5,
         borderJoinStyle: 'miter',
-        pointBorderColor: 'rgb(115, 109, 186)', // border color of point
-        pointBackgroundColor: 'rgb(115, 109, 186)', // bcg color of point
+        pointBorderColor: 'rgb(115, 109, 186)',
+        pointBackgroundColor: 'rgb(115, 109, 186)',
         borderWidth: 1.5,
         hoverBackgroundColor: null,
         hoverBorderColor: null,
@@ -28,7 +28,7 @@ const Chart = ({ data }: any) => {
         pointHoverBackgroundColor: null,
         pointHoverBorderColor: null,
         pointHoverBorderWidth: null,
-        pointRadius: 3, // size of point
+        pointRadius: 3,
         pointHitRadius: 5,
       },
       {
@@ -36,14 +36,14 @@ const Chart = ({ data }: any) => {
         data: data.usdAmount,
         fill: false,
         stepped: false,
-        lineTension: 0, // bcg of chart
-        borderColor: 'rgb(92, 186, 153)', // line of chart
+        lineTension: 0,
+        borderColor: 'rgb(92, 186, 153)',
         borderCapStyle: 'butt',
         borderDash: [],
         borderDashOffset: 1,
         borderJoinStyle: 'miter',
-        pointBorderColor: 'teal', // border color of point
-        pointBackgroundColor: 'rgb(92, 186, 153)', // bcg color of point
+        pointBorderColor: 'teal',
+        pointBackgroundColor: 'rgb(92, 186, 153)',
         borderWidth: 1.5,
         hoverBackgroundColor: 'rgb(92, 186, 153)',
         hoverBorderColor: null,
@@ -52,7 +52,7 @@ const Chart = ({ data }: any) => {
         pointHoverBackgroundColor: null,
         pointHoverBorderColor: null,
         pointHoverBorderWidth: null,
-        pointRadius: 3, // size of point
+        pointRadius: 3,
         pointHitRadius: 5,
       },
     ],

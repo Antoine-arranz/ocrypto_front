@@ -20,7 +20,6 @@ const Dashboard = ({
 }: any) => {
   const [addEventModal, setaddEventModal] = useState<boolean>(false);
   useEffect(() => {
-    console.log('useffect');
     if (currentWallet) {
       getAllEvents(currentWallet);
       getQuantity(currentWallet);

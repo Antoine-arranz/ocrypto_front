@@ -67,7 +67,7 @@ const Wallets: React.FC<WalletPropsI> = ({
         walletName={walletUpdatedName}
         userId={user.id}
       />
-      {
+      {wallets.length > 0 && (
         <Container>
           <TableSpacedRows sortable>
             <Table.Header>
@@ -79,44 +79,43 @@ const Wallets: React.FC<WalletPropsI> = ({
               </Table.Row>
             </Table.Header>
             <Table.Body>
-              {wallets &&
-                wallets.map((wallet: any, i: any) => {
-                  return (
-                    <Table.Row key={i}>
-                      <Table.Cell>{wallet.name}</Table.Cell>
-                      <Table.Cell textAlign='right'>
-                        <Btn.Group widths='one'>
-                          <Button
-                            content='Update'
-                            icon='edit outline'
-                            labelPosition='right'
-                            walletName={wallet.name}
-                            walletId={wallet.id}
-                            onClick={() => {
-                              setUpdateWalletModal(true);
-                              setWalletUpdatedId(wallet.id);
-                              setWalletUpdatedName(wallet.name);
-                            }}
-                          />
-                          <Button
-                            color='red'
-                            content='Delete'
-                            icon='trash alternate outline'
-                            labelPosition='right'
-                            path={`/wallet/${user.id}/delete`}
-                            onClick={() =>
-                              deleteButton(wallet.id, wallet.User_Id)
-                            }
-                          />
-                        </Btn.Group>
-                      </Table.Cell>
-                    </Table.Row>
-                  );
-                })}
+              {wallets.map((wallet: any, i: any) => {
+                return (
+                  <Table.Row key={i}>
+                    <Table.Cell>{wallet.name}</Table.Cell>
+                    <Table.Cell textAlign='right'>
+                      <Btn.Group widths='one'>
+                        <Button
+                          content='Update'
+                          icon='edit outline'
+                          labelPosition='right'
+                          walletName={wallet.name}
+                          walletId={wallet.id}
+                          onClick={() => {
+                            setUpdateWalletModal(true);
+                            setWalletUpdatedId(wallet.id);
+                            setWalletUpdatedName(wallet.name);
+                          }}
+                        />
+                        <Button
+                          color='red'
+                          content='Delete'
+                          icon='trash alternate outline'
+                          labelPosition='right'
+                          path={`/wallet/${user.id}/delete`}
+                          onClick={() =>
+                            deleteButton(wallet.id, wallet.User_Id)
+                          }
+                        />
+                      </Btn.Group>
+                    </Table.Cell>
+                  </Table.Row>
+                );
+              })}
             </Table.Body>
           </TableSpacedRows>
         </Container>
-      }
+      )}
     </Wrapper>
   );
 };

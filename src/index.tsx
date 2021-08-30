@@ -11,6 +11,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import 'semantic-ui-css/semantic.min.css';
 
 export type RootState = ReturnType<typeof store.getState>;
+
 const servicesContainer = services(config);
 const { store, persistor } = configureStore({}, servicesContainer);
 
