@@ -5,7 +5,7 @@ import { Grid } from 'semantic-ui-react';
 import FormizSimpleInput from '../../components/Formiz';
 import Button from '../../components/Button';
 import Loader from '../../components/Loader';
-
+import { passwordRegex } from '../../interface/formSchema/user';
 import Wrapper from '../../components/Wrapper';
 import Spacer from '../../components/Spacer';
 import { UserSignInI } from '../../interface/formSchema/user';
@@ -82,13 +82,13 @@ const SingIn: React.FC<SignInPropsI> = ({
                   label='Password'
                   placeholder='Password'
                   required='Password is required'
-                  /**validations={[
+                  validations={[
                     {
-                      //rule: isPattern(passwordRegex)
+                      rule: isPattern(passwordRegex),
                       message:
-                        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character",
+                        'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character',
                     },
-                  ]}*/
+                  ]}
                 />
               </Grid.Column>
               <Grid.Column>
