@@ -68,7 +68,7 @@ const Dashboard = ({
             border='1px solid black'
             padding='4em'
             fontSize='2em'
-            borderRadius='5%'
+            borderRadius='1em'
           >
             You don't have any Event, use the button to add one
           </TextCustom>
@@ -78,7 +78,7 @@ const Dashboard = ({
           border='1px solid black'
           padding='4em'
           fontSize='2em'
-          borderRadius='5%'
+          borderRadius='1em'
         >
           You must select a wallet first
         </TextCustom>
