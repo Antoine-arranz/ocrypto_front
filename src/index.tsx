@@ -1,23 +1,28 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./views/App";
-import reportWebVitals from "./reportWebVitals";
-import "./styles/_reset.scss";
+import ReactDOM from 'react-dom';
+import App from './containers/App';
+import './styles/_reset.scss';
+import './styles/index.scss';
 import { Provider } from 'react-redux';
-import store from './store';
+import './theme/styles.css';
+import configureStore from './store';
+import services from './services';
+import config from './config';
+import { PersistGate } from 'redux-persist/integration/react';
+import 'semantic-ui-css/semantic.min.css';
 
+export type RootState = ReturnType<typeof store.getState>;
 
+const servicesContainer = services(config);
+const { store, persistor } = configureStore({}, servicesContainer);
 
-ReactDOM.render(
-  <React.StrictMode>
+const Root = () => {
+  return (
     <Provider store={store}>
-    <App />
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+  );
+};
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(<Root />, document.getElementById('root'));

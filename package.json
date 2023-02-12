@@ -5,6 +5,8 @@
   "dependencies": {
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
+    "@formiz/core": "^1.1.1",
+    "@formiz/validations": "^1.0.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -12,12 +14,20 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "axios": "^0.21.1",
+    "chart.js": "^3.5.1",
+    "dotenv": "^8.2.0",
+    "helmet": "^4.6.0",
+    "history": "^4.10.1",
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
+    "react-chartjs-2": "^3.0.4",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "redux-devtools-extension": "^2.13.9",
+    "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "sass": "^1.36.0",
     "semantic-ui-css": "^2.4.1",
@@ -48,5 +58,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.172",
+    "@types/react-router-dom": "^5.1.8"
   }
 }
